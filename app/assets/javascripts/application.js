@@ -24,3 +24,11 @@ function getImage() {
     height: img.clientHeight
     }
 }
+
+canvasElement.getContext('2d').getImageData(x, y, 1, 1).data
+// returns RGBA array.
+
+var canvas = document.createElement("canvas");
+canvas.width = yourImageElement.width;
+canvas.height = yourImageElement.height;
+canvas.getContext('2d').drawImage(yourImageElement, 0, 0);
