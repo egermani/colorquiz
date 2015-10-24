@@ -1,0 +1,57 @@
+TODO
+----
+
+Let users upload their own images
+
+define their own color points
+
+make use of SRS algorithms to decide which images to show them, provided they
+are visiting frequently.
+
+MVP User stories
+------------
+
+  The Game
+  --------
+    - I want to be able to pick an image to work with
+    - I want to test my color picking skills by comparing my accuracy to a few
+    predefined zones on the image.
+    - The color picker should be large, and work with RGB, HSV, or LAB color.
+
+  The Stats Page
+  ---------------
+    - After I play a round, I want to see my statistics
+    - I want to be able to see my profile's statistics, which show my accuracy
+    - I'd like to know which colors I'm most and least accurate with.
+
+
+
+
+== README
+
+This README would normally document whatever steps are necessary to get the
+application up and running.
+
+Things you may want to cover:
+
+* Ruby version
+
+* System dependencies
+
+* Configuration
+
+* Database creation
+
+* Database initialization
+
+* How to run the test suite
+
+* Services (job queues, cache servers, search engines, etc.)
+
+* Deployment instructions
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.
