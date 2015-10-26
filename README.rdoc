@@ -8,6 +8,8 @@ define their own color points
 make use of SRS algorithms to decide which images to show them, provided they
 are visiting frequently.
 
+Different game modes: only guess values, for instance.
+
 MVP User stories
 ------------
 

@@ -1,3 +1,58 @@
 // Place all the styles related to the Game controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+    background: gray;
+}
+
+img {    
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+
+main {
+    width: 1024px;
+    margin: 0px auto;
+}
+
+.round {
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background: red;
+    width: 100px;
+    height: 100px;
+}
+
+.marker {
+    background-image: image-url('circle-black.svg');
+    width: 43px;
+    height: 43px;
+}
+
+form {
+    margin-top: 1em;
+}
+
+
+/*Below will allow for colored semicircles if you have a div and a div class red side by side*/
+.blue {
+    background-color: #80C5A0;
+    width: 50px;
+    height: 100px;
+    border-radius: 100% / 50%;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    display: inline-block;
+}
+.red {
+    background-color: red;
+    width: 50px;
+    height: 100px;
+    border-radius: 100% / 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    display: inline-block;
+}
