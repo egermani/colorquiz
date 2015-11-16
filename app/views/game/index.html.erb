@@ -3,31 +3,36 @@
     <p>Find me in app/views/game/index.html.erb</p>
 </header>
 <main>
-<ol>
-    <li class="marker" style="
-    left: 900px;
-    top: 336px;
-    position: relative;
-"></li>
-    <li class="marker" style="
-    position: relative;
-    top: 473px;
-"></li>
-    <li class="marker" style="
-    position: relative;
-    top: 634px;
-    left: 725px;
-"></li>
-    <li class="marker" style="
-    position: relative;
-    left: 725px;
-    top: 280px;
-"></li>
-    </ol>
+    <canvas id="myCanvas" height="648" width="1024">
     <%= image_tag("lake-bled.jpg", id: "game-image") %>
+    </canvas>
 
     <form action="">
-        <div><div class="red"></div><div class="blue"></div><input type="text" id="full"></div>
+    <table>
+        <tr>
+            <td>
+                <div class="semi left"></div><div class="semi right" id="spot1_actual"></div>
+                <input type='text' class="full" />
+            </td>
+            <td>
+                <div class="semi left"></div><div class="semi right"></div>
+                <input type='text' class="full" />
+            </td>
+            <td>
+                <div class="semi left"></div><div class="semi right"></div>
+                <input type='text' class="full" />
+            </td>
+            <td>
+                <div class="semi left"></div><div class="semi right"></div>
+                <input type='text' class="full" />
+            </td>
+            <td>
+                <div class="semi left"></div><div class="semi right"></div>
+                <input type='text' class="full" />
+            </td>
+        </tr>
+    </table>
+        <input id="form-submit" type="submit" value="submit"/>
     </form>
 </main>
 
