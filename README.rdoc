@@ -7,6 +7,12 @@ Themed quizzes, painting at night (go to gurney for that one), colored lighting,
 
 define their own color points
 
+let them quickly preload a color to work relative to that
+
+Use random sampling to gather guesses across the image. With enough users, this will let us figure out on an almost per-pixel basis which colors are hard to pick. It'd be cool to then visualize with a heatmap the relative difficulties of the color patches, might give some insight into color vision. Do it like a captcha, sprinkle in some random ones along with the pre-programmed.
+
+let them choose different color targets. These circles on a 50% gray are deceptive -- consider the Lake Bled example. The orange there feels incredibly saturated because it's surrounded by pale violets. The player understands the effect they're going for, but makes the decision relative to the 50% gray, which means they overdo it. So if there was a circular ring that could be set to a certain color that would probably help. Otherwise the quiz is discouragingly difficult, they feel they're getting no better.
+
 make use of SRS algorithms to decide which images to show them, provided they
 are visiting frequently. Massed practice isn't really worthwhile, so it'll be a variety, though the themed stuff is seductive.
 
