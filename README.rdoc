@@ -1,14 +1,19 @@
 TODO
 ----
 
-Let users upload their own images
+Let users upload their own images, or create their own quizzes. Like designing a golf course -- you put together a set of "holes", and colors to pick on each. The designer then includes some helpful tips in case the guesser misses, like "Reflections are typically 2 steps darker than the sky, etc", etc. Let the designers include a link to their work. Or just approach people whose stuff I like, Sinix, Gurney, Algenplefger, Vielmond, Scott Robertson, Matt Kohr obviously, Handprint guy (bruce macevoy)
+
+Themed quizzes, painting at night (go to gurney for that one), colored lighting, skin tones, overcast, the great outdoors.
 
 define their own color points
 
 make use of SRS algorithms to decide which images to show them, provided they
-are visiting frequently.
+are visiting frequently. Massed practice isn't really worthwhile, so it'll be a variety, though the themed stuff is seductive.
 
 Different game modes: only guess values, for instance.
+
+Notan game, have them draw the image at a certain threshold, show them diff.
+
 
 MVP User stories
 ------------
