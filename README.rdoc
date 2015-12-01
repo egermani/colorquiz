@@ -1,3 +1,9 @@
+Immediate todo
+---------------
+  - calculate average color on the backend when a spot is created? Or handle it on the front page.
+    - It should let you select from the images, then drop a spot interactively. Handle the form submission there.
+
+
 TODO
 ----
 

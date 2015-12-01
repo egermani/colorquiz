@@ -44,10 +44,6 @@ $(".full").spectrum({
         .css("background-color", color.toHexString());
     }
 });
-$("#fullClearable").spectrum({
-    showInput: true,
-    allowEmpty:true
-});
 
 function tupleizeRGB(rgbString) {
     // Sample input: "rgb(145,137,164)"

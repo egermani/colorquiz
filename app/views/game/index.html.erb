@@ -7,33 +7,34 @@
     <%= image_tag("lake-bled.jpg", id: "game-image") %>
     </canvas>
 
-    <form action="">
-    <table>
-        <tr>
-            <td>
-                <div class="semi left"></div><div class="semi right"></div>
-                <input type='text' class="full" />
-            </td>
-            <td>
-                <div class="semi left"></div><div class="semi right"></div>
-                <input type='text' class="full" />
-            </td>
-            <td>
-                <div class="semi left"></div><div class="semi right"></div>
-                <input type='text' class="full" />
-            </td>
-            <td>
-                <div class="semi left"></div><div class="semi right"></div>
-                <input type='text' class="full" />
-            </td>
-            <td>
-                <div class="semi left"></div><div class="semi right"></div>
-                <input type='text' class="full" />
-            </td>
-        </tr>
-    </table>
-        <input id="form-submit" type="submit" value="submit"/>
-    </form>
+    <%= form_tag game_result_path, method: "post" do %>
+        <table>
+            <tr>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+            </tr>
+        </table>
+        <%= submit_tag("Submit") %>
+        <!-- <input id="form-submit" type="submit" value="submit"/> -->
+    <% end %>
 
     <pre>
         <ol>
