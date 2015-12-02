@@ -1,6 +1,10 @@
 $( document ).ready(function () {
+    var tool = new paper.Tool();
+    tool.activate();
     var spots = [];
     var texts = [];
+    var spotCounter = 0;
+
     raster = new Raster('game-image');
     // var raster = new Raster('game-image');
 
@@ -22,7 +26,7 @@ $( document ).ready(function () {
       this.path.onClick = function(event) {
         // debugger;
         this.remove();
-        spots.splice(this.data-1, 1);
+        spots[this.data-1] = null;
         texts[this.data-1].remove();
     }
       spots.push(this.path);
@@ -36,12 +40,21 @@ $( document ).ready(function () {
       texts.push(this.text);
     };
 
+    tool.onMouseDown = function (event) {
+        // debugger;
+        if (document.getElementById("mode_add").checked) {
+            spotCounter++;
+            new Spot(15, event.point.x, event.point.y, spotCounter);
+        };
+    }
+
     // For each spot associated with the image, create one, and push it into an array.
     var data = $('#myCanvas').data('spots');
 
     for (i = 0; i <= data.length - 1; i++) {
         spot = data[i];
-        new Spot(spot.radius, spot.x, spot.y, i+1)
+        new Spot(spot.radius, spot.x, spot.y, spotCounter+1)
+        spotCounter++
     }
 
     // spot1 = new Spot(15, 900, 300, '1');

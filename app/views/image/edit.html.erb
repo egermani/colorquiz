@@ -1,7 +1,12 @@
 <h1>Image#edit</h1>
 <p>Find me in app/views/image/edit.html.erb</p>
 <%= javascript_include_tag "edit", type: "text/paperscript", canvas: "myCanvas" %>
-
+<p>
+    <%= label_tag 'Add' %>
+    <%= radio_button_tag 'mode', 'add', checked = true %>
+    <%= label_tag 'Remove' %>
+    <%= radio_button_tag 'mode', 'remove' %>
+</p>
 <%= content_tag(:canvas, id: "myCanvas", width: @image.width, height: @image.height, data: {spots: @image.spots}) do %>
     <%= image_tag(@image.path, id: "game-image") %>
 <% end %>
