@@ -1,3 +1,9 @@
+Tonal painters have to learn above all to look at their subjects with a different attitude to normal viewing, in order to judge objectively the hue, "colorfulness", and brightness of the light coming to from each point in the subject. That is, we have to switch off one kind of processing - one that is built into our visual system, wherein each colour is compared with an inferred white - and learn a completely different kind of processing, where each colour is compared with the full range of colours in subject as a whole. With practice we can learn to switch at will between our normal mode of vision and this painter's way of seeing. But we always need to be on guard against the tendency to slip into judging colours in constancy mode, that is, to paint their perceived local colour, instead of the colour that we need to create the illusion of that colour. The problem is analogous to the difficulties encountered in foreshortening in drawing, where we also need to learn to see and draw what is actually in front of our eyes, and not what our brain works out for us.
+
+At this point the beginning painter might ask: "well, if that's the way it looks to my eyes, shouldn't I paint it that way?" The answer to this is a definite no - if we can recreate the stimulus that created the appearance, we will create the effect the we see in our subject; if we instead chase the appearance, we will create something different.
+
+http://www.huevaluechroma.com/034.php
+
 Immediate todo
 ---------------
   - calculate average color on the backend when a spot is created? Or handle it on the front page.
@@ -51,6 +57,9 @@ http://www.ctrlpaint.com/videos/guess-that-color
 
 http://stackoverflow.com/questions/15408522/rgb-to-xyz-and-lab-colours-conversion
 
+Acknowledgments
+----------------
+Spectrum JS
 http://joelencioni.com/blog/2014/01/03/integrating-bower-with-rails/
 
 var c = document.getElementById("myCanvas");

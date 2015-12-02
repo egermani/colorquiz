@@ -1,4 +1,20 @@
 Rails.application.routes.draw do
+  get 'image/index'
+
+  get 'image/show'
+
+  get 'image/new'
+
+  get 'image/edit'
+
+  get 'image/create'
+
+  get 'image/destroy'
+
+  get 'image/update'
+
+  get 'image/destroy'
+
   resources :spots
   resources :spots
   get 'game/index'
@@ -33,10 +49,9 @@ Rails.application.routes.draw do
   #   end
 
   # Example resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+    resources :images do
+      resources :spots
+    end
 
   # Example resource route with more complex sub-resources:
   #   resources :products do

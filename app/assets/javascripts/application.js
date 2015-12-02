@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require paper/dist/paper-full.min.js
 //= require spectrum/spectrum.js
+// require edit
 // require turbolinks
 // require game

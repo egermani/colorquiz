@@ -1,11 +1,13 @@
 <header>
+  <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
     <h1>Color Quiz</h1>
 <!--     <p>The human eye is incredibly capable; you might not feel that way after trying this quiz. Color vision is contextual, and isolating a color from its context is a challenge. But if you get good at it, you'll paint better.</p>
  --></header>
 <main>
-    <canvas id="myCanvas" height="648" width="1024">
+<% @image = {width: 1024, height: 684} %>
+<%= content_tag :canvas, id: "myCanvas", height: @image[:height], width: @image[:width] do %>
     <%= image_tag("lake-bled.jpg", id: "game-image") %>
-    </canvas>
+<% end %>
 
     <%= form_tag game_result_path, method: "post" do %>
         <table>
