@@ -62,6 +62,9 @@ Acknowledgments
 Spectrum JS
 http://joelencioni.com/blog/2014/01/03/integrating-bower-with-rails/
 
+http://stackoverflow.com/questions/26785966/transform-bounding-box-in-paper-js
+Alex Blackwood for a fantastic overflow
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.font = "30px Arial";
