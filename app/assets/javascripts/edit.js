@@ -93,12 +93,6 @@ $( document ).ready(function () {
                 // debugger;
             };
         };
-        // // OLD VERSION
-        // // debugger;
-        // if (document.getElementById("mode_add").checked) {
-        //     spotCounter++;
-        //     new Spot(15, event.point.x, event.point.y, spotCounter);
-        // };
     }
 
     tool.onMouseDrag = function (event) {
@@ -115,7 +109,7 @@ $( document ).ready(function () {
 
         // Prevent the key event from bubbling
         return false;
-        } else if (event.key == 'right') {
+        } else if (event.key == 'left') {
         // Scale the path by 110%:
         path = getActivated()[0];
         path.scale(1.1);
@@ -127,7 +121,7 @@ $( document ).ready(function () {
 
         // Prevent the key event from bubbling
         return false;
-        } else if (event.key == 'left') {
+        } else if (event.key == 'right') {
         // Scale the path by 110%:
         path = getActivated()[0];
         path.scale(0.9);
