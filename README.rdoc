@@ -53,6 +53,10 @@ http://stackoverflow.com/questions/15408522/rgb-to-xyz-and-lab-colours-conversio
 
 Acknowledgments
 ----------------
+http://stackoverflow.com/questions/4065295/saving-the-images-dimensions-width-and-height-in-paperclip
+resizing width
+
+
 Spectrum JS
 http://joelencioni.com/blog/2014/01/03/integrating-bower-with-rails/
 

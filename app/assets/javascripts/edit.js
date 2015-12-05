@@ -49,10 +49,11 @@ $( document ).ready(function () {
       this.path = new paper.Path.Circle({
         center: [xCoord, yCoord],
         radius: spotSize,
-        fillColor: 'white',
+        fillColor: 'black',
         strokeColor: 'white'
                 });
       this.path.fillColor.alpha = 0.0;
+      // this.path.blendMode = 'negation';
       this.path.data = marker;
       // this.path.onClick = function(event) {
       //   // debugger;
@@ -68,6 +69,7 @@ $( document ).ready(function () {
         fontFamily: 'Courier New',
         fontSize: 20
         });
+      // this.text.blendMode = 'negation';
       texts.push(this.text);
       return this.path
     };
@@ -97,9 +99,21 @@ $( document ).ready(function () {
 
     tool.onMouseDrag = function (event) {
     if (path) {
+        var text = texts[path.data-1];
         path.position += event.delta;
-        texts[path.data-1].position += event.delta;
+        text.position += event.delta;
+        setContrastColor(text, 0.6, raster, "fillColor");
+        setContrastColor(path, 0.6, raster, "strokeColor");
         }
+    }
+
+    function setContrastColor(object, threshold, raster, colorable) {
+        var newColor = raster.getAverageColor(object.position);
+        if (newColor.lightness >= threshold) {
+            object[colorable] = newColor - 1;
+        } else {
+            object[colorable] = newColor + 1;
+        };
     }
 
     tool.onKeyDown = function (event) {
@@ -117,7 +131,7 @@ $( document ).ready(function () {
         // texts[path.data-1].position = path.bounds.topLeft
         // texts[path.data-1].position += new Point(-10, -10)
         texts[path.data-1].position = new Point(path.bounds.topLeft.x - 10, path.bounds.topLeft.y - 10)
-
+        setContrastColor(texts[path.data-1], 0.6, raster, "fillColor");
 
         // Prevent the key event from bubbling
         return false;
@@ -129,6 +143,7 @@ $( document ).ready(function () {
         // texts[path.data-1].position = path.bounds.topLeft
         // texts[path.data-1].position += new Point(-10, -10)
         texts[path.data-1].position = new Point(path.bounds.topLeft.x - 10, path.bounds.topLeft.y - 10)
+        setContrastColor(texts[path.data-1], 0.6, raster, "fillColor");
 
         // Prevent the key event from bubbling
         return false;
