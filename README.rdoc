@@ -4,12 +4,6 @@ At this point the beginning painter might ask: "well, if that's the way it looks
 
 http://www.huevaluechroma.com/034.php
 
-Immediate todo
----------------
-  - calculate average color on the backend when a spot is created? Or handle it on the front page.
-    - It should let you select from the images, then drop a spot interactively. Handle the form submission there.
-
-
 TODO
 ----
 

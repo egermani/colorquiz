@@ -1,21 +1,18 @@
 Rails.application.routes.draw do
-  get 'image/index'
+  # get 'image/index'
 
-  get 'image/show'
+  # get 'image/show'
 
-  get 'image/new'
+  # get 'image/new'
 
-  get 'image/edit'
+  # get 'image/edit'
 
-  get 'image/create'
+  # get 'image/create'
 
-  get 'image/destroy'
+  # get 'image/destroy'
 
-  get 'image/update'
+  # get 'image/update'
 
-  get 'image/destroy'
-
-  resources :spots
   resources :spots
   get 'game/index'
 
