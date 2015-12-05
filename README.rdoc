@@ -1,14 +1,31 @@
+Tonal painters have to learn above all to look at their subjects with a different attitude to normal viewing, in order to judge objectively the hue, "colorfulness", and brightness of the light coming to from each point in the subject. That is, we have to switch off one kind of processing - one that is built into our visual system, wherein each colour is compared with an inferred white - and learn a completely different kind of processing, where each colour is compared with the full range of colours in subject as a whole. With practice we can learn to switch at will between our normal mode of vision and this painter's way of seeing. But we always need to be on guard against the tendency to slip into judging colours in constancy mode, that is, to paint their perceived local colour, instead of the colour that we need to create the illusion of that colour. The problem is analogous to the difficulties encountered in foreshortening in drawing, where we also need to learn to see and draw what is actually in front of our eyes, and not what our brain works out for us.
+
+At this point the beginning painter might ask: "well, if that's the way it looks to my eyes, shouldn't I paint it that way?" The answer to this is a definite no - if we can recreate the stimulus that created the appearance, we will create the effect the we see in our subject; if we instead chase the appearance, we will create something different.
+
+http://www.huevaluechroma.com/034.php
+
 TODO
 ----
 
-Let users upload their own images
+Let users upload their own images, or create their own quizzes. Like designing a golf course -- you put together a set of "holes", and colors to pick on each. The designer then includes some helpful tips in case the guesser misses, like "Reflections are typically 2 steps darker than the sky, etc", etc. Let the designers include a link to their work. Or just approach people whose stuff I like, Sinix, Gurney, Algenplefger, Vielmond, Scott Robertson, Matt Kohr obviously, Handprint guy (bruce macevoy)
+
+Themed quizzes, painting at night (go to gurney for that one), colored lighting, skin tones, overcast, the great outdoors.
 
 define their own color points
 
+let them quickly preload a color to work relative to that
+
+Use random sampling to gather guesses across the image. With enough users, this will let us figure out on an almost per-pixel basis which colors are hard to pick. It'd be cool to then visualize with a heatmap the relative difficulties of the color patches, might give some insight into color vision. Do it like a captcha, sprinkle in some random ones along with the pre-programmed.
+
+let them choose different color targets. These circles on a 50% gray are deceptive -- consider the Lake Bled example. The orange there feels incredibly saturated because it's surrounded by pale violets. The player understands the effect they're going for, but makes the decision relative to the 50% gray, which means they overdo it. So if there was a circular ring that could be set to a certain color that would probably help. Otherwise the quiz is discouragingly difficult, they feel they're getting no better.
+
 make use of SRS algorithms to decide which images to show them, provided they
-are visiting frequently.
+are visiting frequently. Massed practice isn't really worthwhile, so it'll be a variety, though the themed stuff is seductive.
 
 Different game modes: only guess values, for instance.
+
+Notan game, have them draw the image at a certain threshold, show them diff.
+
 
 MVP User stories
 ------------
@@ -18,6 +35,7 @@ MVP User stories
     - I want to be able to pick an image to work with
     - I want to test my color picking skills by comparing my accuracy to a few
     predefined zones on the image.
+    - I want to be tested on 
     - The color picker should be large, and work with RGB, HSV, or LAB color.
 
   The Stats Page
@@ -27,33 +45,23 @@ MVP User stories
     - I'd like to know which colors I'm most and least accurate with.
 
 
+https://en.wikipedia.org/wiki/Helmholtz%E2%80%93Kohlrausch_effect
 
+http://www.ctrlpaint.com/videos/guess-that-color
 
-== README
+http://stackoverflow.com/questions/15408522/rgb-to-xyz-and-lab-colours-conversion
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Acknowledgments
+----------------
+Spectrum JS
+http://joelencioni.com/blog/2014/01/03/integrating-bower-with-rails/
 
-Things you may want to cover:
+http://stackoverflow.com/questions/26785966/transform-bounding-box-in-paper-js
+Alex Blackwood for a fantastic overflow
 
-* Ruby version
+var c = document.getElementById("myCanvas");
+var ctx = c.getContext("2d");
+ctx.font = "30px Arial";
+ctx.fillText("Hello World",10,50);
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+The HK effect and related additivity failures demonstrate that brightness/lightness and hue purity are not independent dimensions: one attribute affects the other depending on the level or intensity of both. We saw a similar interdependence of hue purity and brightness contrast in measures of brilliance, and it is a general feature of color vision. It implies that our idea of color as separable colormaking attributes or dimensions, each varying independently of the others, misrepresents the integrated and highly dynamic nature of color perception. 

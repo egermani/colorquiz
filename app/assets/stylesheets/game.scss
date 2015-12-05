@@ -4,9 +4,27 @@
 
 body {
     background: gray;
+    counter-reset: spot-count;
 }
 
-img {    
+table {
+    margin: 0px auto;
+}
+
+td::after {
+    content: counter(spot-count);
+    counter-increment: spot-count;
+    font-size: 62px;
+    position: relative;
+    top: -44px;
+    right: 44px;
+}
+
+td {
+    color: white;
+}
+
+canvas {    
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -38,19 +56,21 @@ form {
 
 
 /*Below will allow for colored semicircles if you have a div and a div class red side by side*/
-.blue {
-    background-color: #80C5A0;
+
+.right {
     width: 50px;
     height: 100px;
+    background-color: #a2a2a2;
     border-radius: 100% / 50%;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
     display: inline-block;
 }
-.red {
-    background-color: red;
+.left {
     width: 50px;
     height: 100px;
+    background-color: #a2a2a2;
+    /*border: 1px solid black;*/
     border-radius: 100% / 50%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;

@@ -1,33 +1,55 @@
 <header>
-    <h1>Game#index</h1>
-    <p>Find me in app/views/game/index.html.erb</p>
-</header>
+  <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
+    <h1>Color Quiz</h1>
+<!--     <p>The human eye is incredibly capable; you might not feel that way after trying this quiz. Color vision is contextual, and isolating a color from its context is a challenge. But if you get good at it, you'll paint better.</p>
+ --></header>
 <main>
-<ol>
-    <li class="marker" style="
-    left: 900px;
-    top: 336px;
-    position: relative;
-"></li>
-    <li class="marker" style="
-    position: relative;
-    top: 473px;
-"></li>
-    <li class="marker" style="
-    position: relative;
-    top: 634px;
-    left: 725px;
-"></li>
-    <li class="marker" style="
-    position: relative;
-    left: 725px;
-    top: 280px;
-"></li>
-    </ol>
+<% @image = {width: 1024, height: 684} %>
+<%= content_tag :canvas, id: "myCanvas", height: @image[:height], width: @image[:width] do %>
     <%= image_tag("lake-bled.jpg", id: "game-image") %>
+<% end %>
+
+    <%= form_tag game_result_path, method: "post" do %>
+        <table>
+            <tr>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+            </tr>
+        </table>
+        <%= submit_tag("Submit") %>
+        <!-- <input id="form-submit" type="submit" value="submit"/> -->
+    <% end %>
+
+    <pre>
+        <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </pre>
 
     <form action="">
-        <div><div class="red"></div><div class="blue"></div><input type="text" id="full"></div>
+        <input type="color">
     </form>
 </main>
 

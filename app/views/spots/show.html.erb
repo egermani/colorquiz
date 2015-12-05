@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image:</strong>
+  <%= @spot.image %>
+</p>
+
+<p>
+  <strong>Color:</strong>
+  <%= @spot.color %>
+</p>
+
+<p>
+  <strong>X:</strong>
+  <%= @spot.x %>
+</p>
+
+<p>
+  <strong>Y:</strong>
+  <%= @spot.y %>
+</p>
+
+<p>
+  <strong>Radius:</strong>
+  <%= @spot.radius %>
+</p>
+
+<%= link_to 'Edit', edit_spot_path(@spot) %> |
+<%= link_to 'Back', spots_path %>

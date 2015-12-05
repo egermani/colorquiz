@@ -1,0 +1,9 @@
+<h1>Image#new</h1>
+<p>Find me in app/views/image/new.html.erb</p>
+
+<%= form_for @image, url: images_path, html: { multipart: true } do |form| %>
+  <%= label_tag "Name" %>
+  <%= text_field_tag(:name) %>
+  <%= form.file_field :img %>
+  <%= submit_tag %>
+<% end %>
