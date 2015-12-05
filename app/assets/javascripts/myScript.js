@@ -1,4 +1,6 @@
-spots = []
+var spots = []
+var texts = []
+var spotCounter = 0;
 raster = new Raster('game-image');
 // var raster = new Raster('game-image');
 
@@ -6,30 +8,56 @@ raster = new Raster('game-image');
 raster.position = view.center;
 
 function Spot(spotSize, xCoord, yCoord, marker) {
-  this.xCoord = xCoord;
-  this.yCoord = yCoord;
-  this.path = new paper.Path.Circle({
-    center: [xCoord, yCoord],
-    radius: spotSize,
-    strokeColor: 'white'
-            });
-  this.text = new paper.PointText({
-    point: [xCoord - (spotSize * 2), yCoord - spotSize],
-    content: marker,
-    fillColor: 'white',
-    fontFamily: 'Courier New',
-    fontSize: 20
-    });
-  spots.push(this.path);
-};
+        this.marker = marker
+      this.xCoord = xCoord;
+      this.yCoord = yCoord;
+      this.path = new paper.Path.Circle({
+        center: [xCoord, yCoord],
+        radius: spotSize,
+        fillColor: 'black',
+        strokeColor: 'white'
+        });
+      this.path.fillColor.alpha = 0.0;
+      setContrastColor(this.path, 0.60, raster, "strokeColor");
+      // this.path.blendMode = 'negation';
+      this.path.data = marker;
+      // this.path.onClick = function(event) {
+      //   // debugger;
+      //   this.remove();
+      //   spots[this.data-1] = null;
+      //   texts[this.data-1].remove();
+    // }
+      spots.push(this.path);
+      this.text = new paper.PointText({
+        point: [this.path.bounds.topLeft.x - 15, this.path.bounds.topLeft.y - 3],
+        content: this.marker,
+        fillColor: 'white',
+        fontFamily: 'Courier New',
+        fontSize: 20
+        });
+      // this.text.blendMode = 'negation';
+      setContrastColor(this.text, 0.60, raster, "fillColor");
+      texts.push(this.text);
+      return this.path
+    };
+
+    function setContrastColor(object, threshold, raster, colorable) {
+        var newColor = raster.getAverageColor(object.position);
+        if (newColor.lightness >= threshold) {
+            object[colorable] = newColor - 1;
+        } else {
+            object[colorable] = newColor + 1;
+        };
+    }
 
 // For each spot associated with the image, create one, and push it into an array.
+var data = $('#myCanvas').data('spots');
 
-spot1 = new Spot(15, 900, 300, '1');
-spot2 = new Spot(6, 420, 265, '2');
-spot3 = new Spot(15, 900, 450, '3');
-spot4 = new Spot(15, 960, 200, '4');
-spot5 = new Spot(15, 120, 325, '5');
+for (i = 0; i <= data.length - 1; i++) {
+    spot = data[i];
+    new Spot(spot.radius, spot.x, spot.y, spotCounter+1)
+    spotCounter++
+}
 
 //function onMouseMove(event) {
     // Set the fill color of the path to the average color

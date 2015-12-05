@@ -51,8 +51,9 @@ $( document ).ready(function () {
         radius: spotSize,
         fillColor: 'black',
         strokeColor: 'white'
-                });
+        });
       this.path.fillColor.alpha = 0.0;
+      setContrastColor(this.path, 0.60, raster, "strokeColor");
       // this.path.blendMode = 'negation';
       this.path.data = marker;
       // this.path.onClick = function(event) {
@@ -70,6 +71,7 @@ $( document ).ready(function () {
         fontSize: 20
         });
       // this.text.blendMode = 'negation';
+      setContrastColor(this.text, 0.60, raster, "fillColor");
       texts.push(this.text);
       return this.path
     };
@@ -158,6 +160,29 @@ $( document ).ready(function () {
         new Spot(spot.radius, spot.x, spot.y, spotCounter+1)
         spotCounter++
     }
+
+    $("#spot_submit").on("submit", function(event) {
+        event.preventDefault();
+        var spots = project.getItems({className: "Path"})
+        console.log(spots);
+        var reformattedArray = spots.map(function(obj){ 
+           var rObj = {};
+           rObj.radius = obj.bounds.width / 2;
+           rObj.color = raster.getAverageColor(obj).toCSS(true);
+           rObj.x = Math.floor(obj.position.x)
+           rObj.y = Math.floor(obj.position.y)
+           return rObj;
+        });
+        // debugger;
+        var route = $(this).attr("action")
+        $.ajax({
+            url: route,
+            method: "POST",
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify({spot: reformattedArray})
+            })
+    })
 
     // spot1 = new Spot(15, 900, 300, '1');
     // spot2 = new Spot(6, 420, 265, '2');

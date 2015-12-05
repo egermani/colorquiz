@@ -1,5 +1,55 @@
-<h1>Image#show</h1>
-<p>Find me in app/views/image/show.html.erb</p>
+<header>
+  <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
+    <h1>Color Quiz</h1>
+<!--     <p>The human eye is incredibly capable; you might not feel that way after trying this quiz. Color vision is contextual, and isolating a color from its context is a challenge. But if you get good at it, you'll paint better.</p>
+ --></header>
+<%= content_tag(:main, style: "width: #{@image.width}px") do %>
+    <%= content_tag(:canvas, id: "myCanvas", width: @image.width , height: @image.height, data: {spots: @image.spots}) do %>
+        <%= image_tag(@image.img.url(:full), id: "game-image") %>
+    <% end %>
+<% end %>
 
-<%= @image.name %>
-<%= image_tag @image.img.url(:full) %>
+    <%= form_tag game_result_path, method: "post" do %>
+        <table>
+            <tr>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+                <td>
+                    <div class="semi left"></div><div class="semi right"></div>
+                    <input type='text' class="full" />
+                </td>
+            </tr>
+        </table>
+        <%= submit_tag("Submit") %>
+        <!-- <input id="form-submit" type="submit" value="submit"/> -->
+    <% end %>
+
+    <pre>
+        <ol>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </pre>
+
+    <form action="">
+        <input type="color">
+    </form>
+</main>
+

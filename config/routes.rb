@@ -1,21 +1,4 @@
 Rails.application.routes.draw do
-  # get 'image/index'
-
-  # get 'image/show'
-
-  # get 'image/new'
-
-  # get 'image/edit'
-
-  # get 'image/create'
-
-  # get 'image/destroy'
-
-  # get 'image/update'
-
-  resources :spots
-  get 'game/index'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -27,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'game/result'
   post 'game/result'
+
+  post 'images/:id/edit' => 'images#update', as: :update_image
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
