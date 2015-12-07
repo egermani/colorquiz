@@ -71,6 +71,10 @@ $(".full").spectrum({
     move: function(color) {
         $(this).siblings(".semi")
         .css("background-color", color.toHexString());
+    },
+    change: function(color) {
+        // debugger;
+        $(this).siblings().last().val(color.toHexString());
     }
 });
 
@@ -103,7 +107,7 @@ $( document ).ready(function () {
     // 3.) Hide submit button, render results partial.
 
     $("form").on("submit", function(event) {
-        event.preventDefault();
+        // event.preventDefault();
         // debugger;
         $("td").each(function( cell ) {
             var avgColor = raster.getAverageColor(spots[cell]).toCSS();

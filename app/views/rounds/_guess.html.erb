@@ -1,0 +1,11 @@
+<%= content_tag(:div, "", class: ["semi", "left"], style: "background-color: " + "#{guess.color}")%><%= content_tag(:div, "", class: ["semi", "right"], style: "background-color: " + "#{guess.spot.color}") %>
+<%= content_tag(:h3, "Score: #{Colorable.delta(guess, guess.spot)}")%>
+<%= content_tag(:p) do %>
+    <% deltas = Colorable.deltas(guess, guess.spot) %>
+    <b>Lab L delta</b>: <%= deltas[:l] %> | <%= guess.lab[0].round(3) %> / <%= guess.spot.lab[0].round(3) %><br/>
+    <b>R delta</b>: <%= deltas[:r] %> | <%= guess.rgb.r %> / <%= guess.spot.rgb.r %><br/>
+    <b>G delta</b>: <%= deltas[:g] %> | <%= guess.rgb.g %> / <%= guess.spot.rgb.g %><br/>
+    <b>B delta</b>: <%= deltas[:b] %> | <%= guess.rgb.b %> / <%= guess.spot.rgb.b %><br/>
+    <b>Hue delta</b>: <%= deltas[:hue] %> | <%= guess.hue %> / <%= guess.spot.hue %><br/>
+<% end %>
+<hr>
