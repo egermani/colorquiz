@@ -53,19 +53,16 @@ http://stackoverflow.com/questions/15408522/rgb-to-xyz-and-lab-colours-conversio
 
 Acknowledgments
 ----------------
+https://github.com/markusn/color-diff/tree/master/lib
+Color diffing.
+
 http://stackoverflow.com/questions/4065295/saving-the-images-dimensions-width-and-height-in-paperclip
 resizing width
-
 
 Spectrum JS
 http://joelencioni.com/blog/2014/01/03/integrating-bower-with-rails/
 
 http://stackoverflow.com/questions/26785966/transform-bounding-box-in-paper-js
 Alex Blackwood for a fantastic overflow
-
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.font = "30px Arial";
-ctx.fillText("Hello World",10,50);
 
 The HK effect and related additivity failures demonstrate that brightness/lightness and hue purity are not independent dimensions: one attribute affects the other depending on the level or intensity of both. We saw a similar interdependence of hue purity and brightness contrast in measures of brilliance, and it is a general feature of color vision. It implies that our idea of color as separable colormaking attributes or dimensions, each varying independently of the others, misrepresents the integrated and highly dynamic nature of color perception. 

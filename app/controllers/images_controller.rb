@@ -50,7 +50,11 @@ class ImagesController < ApplicationController
   end
 
   def destroy
-    
+    @image.destroy
+    respond_to do |format|
+      format.html { redirect_to images_url, notice: 'Spot was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
