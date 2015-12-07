@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # ciede2000 formula
 gem 'color_difference'
 
+# Converting RGB to LAB color.
+gem 'color-rgb'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use postgres as the database for Active Record
