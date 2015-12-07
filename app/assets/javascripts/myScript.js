@@ -71,6 +71,9 @@ $(".full").spectrum({
     move: function(color) {
         $(this).siblings(".semi")
         .css("background-color", color.toHexString());
+    },
+    change: function(color) {
+    color.toHexString(); // #ff0000
     }
 });
 
