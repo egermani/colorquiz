@@ -1,6 +1,6 @@
 module Colorable
   include Color
-  
+
   def stripped_hex
     color[1..-1]
   end
@@ -17,7 +17,8 @@ module Colorable
   def self.delta(c1, c2)
     c1 = c1.rgb
     c2 = c2.rgb
-    ColorDifference::cie2000({r: c1.r, b: c1.b, g: c1.g},
-              {r: c2.r, b: c2.b, g: c2.g})
+    scaled_score = ColorDifference::cie2000({r: c1.r, b: c1.b, g: c1.g},
+              {r: c2.r, b: c2.b, g: c2.g}) * 100
+    scaled_score.round(2)
   end
 end

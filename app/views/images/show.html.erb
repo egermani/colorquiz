@@ -9,33 +9,20 @@
     <% end %>
 <% end %>
 
-    <%= form_tag game_result_path, method: "post" do %>
-        <table>
-            <tr>
-                <td class="guess">
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td class="guess">
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td class="guess">
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td class="guess">
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td class="guess">
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-            </tr>
-        </table>
-        <%= submit_tag("Submit") %>
-        <!-- <input id="form-submit" type="submit" value="submit"/> -->
+    <%= form_for(@round) do |round_form| %>
+        <%= content_tag :table do %>
+            <%= content_tag :tr do %>
+                <%= round_form.fields_for :guesses, @round.guesses do |round_fields| %>
+                    <td class="guess">
+                        <div class="semi left"></div><div class="semi right"></div>
+                        <input type='text' class="full" />
+                        <%= round_fields.hidden_field :spot_id, value: @image.spots[round_fields.index][:id] %>
+                        <%= round_fields.hidden_field :color %>
+                    </td>
+                <% end %>
+            <% end %>
+        <% end %>
+        <%= submit_tag %>
     <% end %>
 
     <pre>
