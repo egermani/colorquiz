@@ -1,4 +1,8 @@
 <h1>Rounds#show</h1>
 <p>Find me in app/views/rounds/show.html.erb</p>
 
+<p>A score of 2.3 or under should be considered good -- that is the threshold for a just noticeable difference (JND in the jargon). Not all scores are created equal; you will score in the fours on a reddish color and it will look indistinguishable, while two divergent blues will score a 0.6</p>
+
+<%= render partial: "images/canvas", locals: {image: @round.image} %>
+
 <%= render partial: "guess", collection: @round.guesses %>

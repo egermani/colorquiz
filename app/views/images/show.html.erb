@@ -10,6 +10,7 @@
 <% end %>
 
     <%= form_for(@round) do |round_form| %>
+        <%= round_form.hidden_field :image_id, value: @image.id %>
         <%= content_tag :table do %>
             <%= content_tag :tr do %>
                 <%= round_form.fields_for :guesses, @round.guesses do |round_fields| %>

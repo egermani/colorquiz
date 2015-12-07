@@ -2,6 +2,7 @@ class RoundsController < ApplicationController
   before_action :set_round, only: [:show]
 
   def create
+    p params
     @round = Round.new(round_params)
 
     respond_to do |format|
@@ -22,6 +23,6 @@ class RoundsController < ApplicationController
   end
 
   def round_params
-    params.require(:round).permit(:guesses_attributes => [:color, :spot_id])
+    params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id])
   end
 end

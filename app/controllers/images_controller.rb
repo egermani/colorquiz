@@ -6,7 +6,7 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @round = Round.new
+    @round = Round.new()
     @image.spots.count.times { @round.guesses.build }
     @guesses = @round.guesses
   end
