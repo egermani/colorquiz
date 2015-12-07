@@ -1,4 +1,4 @@
-## Colorquiz ##
+== Colorquiz
 
 A web app that improves artists' color discrimination.
 
@@ -25,12 +25,11 @@ MVP User stories
     - I want to be able to see my profile's statistics, which show my accuracy
     - I'd like to know which colors I'm most and least accurate with.
 
-Content
--------
+=== Content
+
     - Themed quizzes, painting at night (go to gurney for that one), colored lighting, skin tones, overcast, the great outdoors.
 
-Potential Features
-------------------
+=== Potential Features
 
     - A new game mode: only guess values.
     
@@ -47,13 +46,14 @@ Potential Features
     - Different color targets. These circles on a 50% gray are deceptive -- consider the Lake Bled example. The orange there feels incredibly saturated because it's surrounded by pale violets. The player understands the effect they're going for, but makes the decision relative to the 50% gray, which means they overdo it. So if there was a circular ring that could be set to a certain color that would probably help.
 
 
-Notes
------
+=== Notes
+
+The HK effect and related additivity failures demonstrate that brightness/lightness and hue purity are not independent dimensions: one attribute affects the other depending on the level or intensity of both. We saw a similar interdependence of hue purity and brightness contrast in measures of brilliance, and it is a general feature of color vision. It implies that our idea of color as separable colormaking attributes or dimensions, each varying independently of the others, misrepresents the integrated and highly dynamic nature of color perception.
 
 https://en.wikipedia.org/wiki/Helmholtz%E2%80%93Kohlrausch_effect
 
-Acknowledgments
-----------------
+=== Acknowledgments
+
 http://www.ctrlpaint.com/videos/guess-that-color
 
 https://github.com/markusn/color-diff/tree/master/lib
@@ -69,5 +69,3 @@ http://stackoverflow.com/questions/15408522/rgb-to-xyz-and-lab-colours-conversio
 
 http://stackoverflow.com/questions/26785966/transform-bounding-box-in-paper-js
 Alex Blackwood for a fantastic overflow
-
-The HK effect and related additivity failures demonstrate that brightness/lightness and hue purity are not independent dimensions: one attribute affects the other depending on the level or intensity of both. We saw a similar interdependence of hue purity and brightness contrast in measures of brilliance, and it is a general feature of color vision. It implies that our idea of color as separable colormaking attributes or dimensions, each varying independently of the others, misrepresents the integrated and highly dynamic nature of color perception. 
