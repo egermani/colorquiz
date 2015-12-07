@@ -11,7 +11,7 @@ table {
     margin: 0px auto;
 }
 
-td::after {
+.guess::after {
     content: counter(spot-count);
     counter-increment: spot-count;
     font-size: 62px;
