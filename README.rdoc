@@ -34,6 +34,18 @@ http://www.ctrlpaint.com/videos/guess-that-color
 
 http://stackoverflow.com/questions/15408522/rgb-to-xyz-and-lab-colours-conversion
 
+=======
+Acknowledgments
+----------------
+https://github.com/markusn/color-diff/tree/master/lib
+Color diffing.
+
+
+http://stackoverflow.com/questions/4065295/saving-the-images-dimensions-width-and-height-in-paperclip
+resizing width
+
+
+Spectrum JS
 http://joelencioni.com/blog/2014/01/03/integrating-bower-with-rails/
 
 var c = document.getElementById("myCanvas");

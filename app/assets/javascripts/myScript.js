@@ -37,23 +37,51 @@ console.log("loaded");
     }
 
 $(".full").spectrum({
+    preferredFormat: "rgb",
     showInput: true,
     move: function(color) {
         $(this).siblings(".semi")
         .css("background-color", color.toHexString());
     }
 });
-$("#fullClearable").spectrum({
-    showInput: true,
-    allowEmpty:true
-});
+
+function objectifyRGB(rgbString) {
+    // Sample input: "rgb(145,137,164)"
+    rgbTuple = rgbString.substring(4, rgbString.length-1).split(",")
+    var obj = {}
+    obj.R = rgbTuple[0]
+    obj.G = rgbTuple[1]
+    obj.B = rgbTuple[2]
+    return obj
+};
+
+function tupleizeRGB(rgbString) {
+    // Sample input: "rgb(145,137,164)"
+    return rgbString.substring(4, rgbString.length-1).split(",")
+};
+
+function euclidean_distance(firstTuple, secondTuple) {
+    sums = Math.pow((firstTuple[0] - secondTuple[0]), 2) + Math.pow((firstTuple[1] - secondTuple[1]), 2) + Math.pow((firstTuple[2] - secondTuple[2]), 2)
+    return Math.sqrt(sums)
+};
 
 $( document ).ready(function () {
 
     $("form").on("submit", function(event) {
         event.preventDefault();
-        avgColor = raster.getAverageColor(spot1.path);
-        $("#spot1_actual").css("background-color", avgColor.toCSS());
-    })
+        // debugger;
+        $("td").each(function( cell ) {
+            var avgColor = raster.getAverageColor(spots[cell]).toCSS();
+            var avgColorTuple = tupleizeRGB(avgColor)
+            var avgColorObj = rgb_to_lab(objectifyRGB(avgColor));
 
+            var guessColor = $(this).children(".semi").first().css("background-color");
+            var guessColorTuple = tupleizeRGB(guessColor)
+            var guessColorObj = rgb_to_lab(objectifyRGB(guessColor));
+            guessColor = rgb_to_lab(objectifyRGB(guessColor));
+            $(this).children(".semi").last().css("background-color", avgColor);
+            // debugger;
+            $("ol li:nth-child(" + (cell + 1) + ")").html("Lab colors. Guess: " + guessColorObj.L + "2: " + avgColorObj.L + "Distance " + ciede2000(guessColorObj,avgColorObj));
+        });
+    });
 });
