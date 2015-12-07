@@ -1,0 +1,15 @@
+{
+  "name": "color-diff",
+  "homepage": "https://github.com/markusn/color-diff",
+  "version": "0.1.7",
+  "_release": "0.1.7",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.7",
+    "commit": "29aef9b6a2b9f8247e2f81c24c1b7f1204dd626b"
+  },
+  "_source": "https://github.com/markusn/color-diff.git",
+  "_target": "~0.1.7",
+  "_originalSource": "https://github.com/markusn/color-diff.git",
+  "_direct": true
+}
