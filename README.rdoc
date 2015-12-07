@@ -16,7 +16,6 @@ MVP User stories
     - I want to be able to pick an image to work with
     - I want to test my color picking skills by comparing my accuracy to a few
     predefined zones on the image.
-    - I want to be tested on 
     - The color picker should be large, and work with RGB, HSV, or LAB color.
 
   The Stats Page
