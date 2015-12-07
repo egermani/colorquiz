@@ -1,4 +1,4 @@
-## Colorquiz
+## Colorquiz ##
 
 A web app that improves artists' color discrimination.
 
