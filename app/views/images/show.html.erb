@@ -1,8 +1,7 @@
 <header>
   <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
     <h1>Color Quiz</h1>
-<!--     <p>The human eye is incredibly capable; you might not feel that way after trying this quiz. Color vision is contextual, and isolating a color from its context is a challenge. But if you get good at it, you'll paint better.</p>
- --></header>
+</header>
 <%= content_tag(:main, style: "width: #{@image.width}px") do %>
     <%= content_tag(:canvas, id: "myCanvas", width: @image.width , height: @image.height, data: {spots: @image.spots}) do %>
         <%= image_tag(@image.img.url(:full), id: "game-image") %>
@@ -12,8 +11,12 @@
     <%= form_for(@round) do |round_form| %>
         <%= round_form.hidden_field :image_id, value: @image.id %>
         <%= content_tag :table do %>
-            <%= content_tag :tr do %>
+            <tr>
                 <%= round_form.fields_for :guesses, @round.guesses do |round_fields| %>
+                    <% if round_fields.index == 5 %>
+                        </tr>
+                        <tr>
+                    <% end %>
                     <td class="guess">
                         <div class="semi left"></div><div class="semi right"></div>
                         <input type='text' class="full" />
@@ -21,7 +24,7 @@
                         <%= round_fields.hidden_field :color %>
                     </td>
                 <% end %>
-            <% end %>
+            </tr>
         <% end %>
         <%= submit_tag %>
     <% end %>
