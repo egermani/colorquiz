@@ -31,12 +31,8 @@ class ImagesController < ApplicationController
 
   def update
     if request.xhr?
-      p params
-      # GOTTA GO THE OTHER WAY, otherwise we can't save anything
       incumbent_spots = Spot.where(image_id: params[:id])
-      p incumbent_spots
       form_spots = params[:spot].each do |spot|
-        p spot
         spot["image_id"] = params[:id].to_i
         spot["radius"] = spot["radius"].to_i
         spot["x"] = spot["x"].to_i
@@ -48,6 +44,7 @@ class ImagesController < ApplicationController
           new_spot.save
         end
       end
+      redirect_to image_path(params["image_id"])
     end
   end
 

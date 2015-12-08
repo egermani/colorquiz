@@ -1,5 +1,9 @@
 class RoundsController < ApplicationController
-  before_action :set_round, only: [:show]
+  before_action :set_round, only: [:show, :destroy]
+
+  def index
+    @rounds = Round.all
+  end
 
   def create
     p params
@@ -13,6 +17,14 @@ class RoundsController < ApplicationController
         format.html { render :new }
         format.json { render json: @round.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    @round.destroy
+    respond_to do |format|
+      format.html { redirect_to rounds_url, notice: 'Round was successfully destroyed.' }
+      format.json { head :no_content }
     end
   end
 

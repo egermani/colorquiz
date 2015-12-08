@@ -1,0 +1,8 @@
+<header>
+  <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
+</header>
+<%= content_tag(:main, style: "width: #{image.width}px") do %>
+    <%= content_tag(:canvas, id: "myCanvas", width: image.width , height: image.height, data: {spots: image.spots}) do %>
+        <%= image_tag(image.img.url(:full), id: "game-image") %>
+    <% end %>
+<% end %>
