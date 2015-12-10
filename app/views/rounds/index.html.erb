@@ -16,8 +16,8 @@
   <tbody>
     <% @rounds.each do |round| %>
       <tr>
-        <td><%= image_tag(round.image.img.url(:thumb)) %></td>
-        <td><%= round.guesses.map(&:delta).sum.round(2) %></td>
+        <td><%= link_to image_tag(round.image.img.url(:thumb)), image_path(round.image) %></td>
+        <td><%= (round.guesses.map(&:delta).sum / round.guesses.count).round(2) %></td>
         <td><%= link_to 'Show', round %></td>
         <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

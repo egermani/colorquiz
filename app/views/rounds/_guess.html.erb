@@ -6,6 +6,6 @@
     <b>R delta</b>: <%= deltas[:r] %> | <%= guess.rgb.r %> / <%= guess.spot.rgb.r %><br/>
     <b>G delta</b>: <%= deltas[:g] %> | <%= guess.rgb.g %> / <%= guess.spot.rgb.g %><br/>
     <b>B delta</b>: <%= deltas[:b] %> | <%= guess.rgb.b %> / <%= guess.spot.rgb.b %><br/>
-    <b>Hue delta</b>: <%= deltas[:hue] %> | <%= guess.hue %> / <%= guess.spot.hue %><br/>
+    <b>Hue delta</b>: <%= calculate_hue_delta(guess) %> | <%= guess.hue %> / <%= guess.spot.hue %><br/>
 <% end %>
 <hr>
