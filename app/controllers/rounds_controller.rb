@@ -13,6 +13,7 @@ class RoundsController < ApplicationController
       if @round.save
         format.html { redirect_to @round, notice: 'Spot was successfully created.' }
         format.json { render :show, status: :created, location: @round }
+        format.js { }
       else
         format.html { render :new }
         format.json { render json: @round.errors, status: :unprocessable_entity }

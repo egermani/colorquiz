@@ -8,7 +8,7 @@
     <% end %>
 <% end %>
 
-    <%= form_for(@round) do |round_form| %>
+    <%= form_for(@round, :remote => true) do |round_form| %>
         <%= round_form.hidden_field :image_id, value: @image.id %>
         <%= content_tag :table do %>
             <tr>
@@ -20,27 +20,16 @@
                     <td class="guess">
                         <div class="semi left"></div><div class="semi right"></div>
                         <input type='text' class="full" />
-                        <%= round_fields.hidden_field :spot_id, value: @image.spots[round_fields.index][:id] %>
                         <%= round_fields.hidden_field :color %>
+                        <%= round_fields.hidden_field :spot_id, value: @image.spots[round_fields.index][:id] %>
                     </td>
                 <% end %>
             </tr>
         <% end %>
         <%= submit_tag %>
     <% end %>
-
-    <pre>
-        <ol>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ol>
-    </pre>
-
-    <form action="">
-        <input type="color">
-    </form>
+    <%= submit_tag value = "Fill circles", id: "defaults" %>
+    <div id="roundResults"></div>
+    <input type="color">
 </main>
 
