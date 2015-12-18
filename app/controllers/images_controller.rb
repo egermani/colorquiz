@@ -3,6 +3,8 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.all
+                   .sort_by { |image| [image.rounds.count, image.calculate_par] }
+                   .reverse!
   end
 
   def show

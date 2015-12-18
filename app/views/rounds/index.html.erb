@@ -16,8 +16,9 @@
   <tbody>
     <% @rounds.each do |round| %>
       <tr>
+        <td><%= round.created_at.localtime.strftime('%m/%d/%Y, %I:%M %p') %></td>
         <td><%= link_to image_tag(round.image.img.url(:thumb)), image_path(round.image) %></td>
-        <td><%= (round.guesses.map(&:delta).sum / round.guesses.count).round(2) %></td>
+        <td><%= round.avg_score%></td>
         <td><%= link_to 'Show', round %></td>
         <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

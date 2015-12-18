@@ -8,10 +8,10 @@
   <thead>
     <tr>
       <th>Image</th>
-      <th>Color</th>
-      <th>X</th>
-      <th>Y</th>
-      <th>Radius</th>
+      <th>Difficulty</th>
+      <th>Action1</th>
+      <th>Action2</th>
+      <th>Action3</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,7 +20,8 @@
     <% @images.each do |image| %>
       <tr>
         <td><%= image_tag(image.img.url(:thumb)) %></td>
-        <td><%= image.name %></td>
+        <td><%= image.rounds.count %></td>
+        <td><%= image.calculate_par %></td>
         <td><%= link_to 'Show', image %></td>
         <td><%= link_to 'Edit', edit_image_path(image) %></td>
         <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>

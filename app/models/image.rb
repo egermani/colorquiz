@@ -6,6 +6,14 @@ class Image < ActiveRecord::Base
   has_many :rounds
   has_many :spots
 
+  def calculate_par
+    if rounds.count > 0
+      (rounds.map(&:avg_score).sum / rounds.count).round(2) 
+    else
+      "n/a"
+    end
+  end
+
   private
 
   # Retrieves dimensions for image assets

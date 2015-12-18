@@ -74,7 +74,7 @@ $(".full").spectrum({
     },
     change: function(color) {
         // debugger;
-        $(this).siblings().last().val(color.toHexString());
+        $(this).siblings("input[type=hidden]").first().val(color.toHexString());
     }
 });
 
@@ -123,4 +123,10 @@ $( document ).ready(function () {
             $("ol li:nth-child(" + (cell + 1) + ")").html("Lab colors. Guess: " + guessColorObj.L + "2: " + avgColorObj.L + "Distance " + ciede2000(guessColorObj,avgColorObj));
         });
     });
+
+    $("#defaults").on("click", function(event) {
+        event.preventDefault;
+        $(".semi.left").css("background-color", "#FFF")
+        $(".sp-light+input[type=hidden]").val("#FFF")
+    })
 });
