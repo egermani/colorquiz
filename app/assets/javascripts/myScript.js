@@ -74,7 +74,7 @@ $(".full").spectrum({
     },
     change: function(color) {
         // debugger;
-        $(this).siblings().last().val(color.toHexString());
+        $(this).siblings("input[type=hidden]").first().val(color.toHexString());
     }
 });
 

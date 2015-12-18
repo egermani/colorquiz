@@ -2,7 +2,7 @@ class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :destroy]
 
   def index
-    @rounds = Round.all
+    @rounds = Round.all.sort_by(&:created_at).reverse!
   end
 
   def create

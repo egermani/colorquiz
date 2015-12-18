@@ -20,15 +20,20 @@ MVP User stories
 
   The Stats Page
   ---------------
-    - After I play a round, I want to see my statistics
-    - I want to be able to see my profile's statistics, which show my accuracy
+    - After I play a round, I want to see my statistics.
+      - This should be presented with natural language. Don't just tell me hue angle, tell me that it needs to be a little more yellow.
+    - I want to be able to see my profile's statistics, which show my accuracy.
     - I'd like to know which colors I'm most and least accurate with.
 
 === Content
 
     - Themed quizzes, painting at night (go to gurney for that one), colored lighting, skin tones, overcast, the great outdoors.
 
-=== Potential Features
+=== Potential/To-Do Features
+
+    - User registration, authentication, authorization, and emailing
+
+    - Welcome/explanation page/how to play and FAQ. (Courses on this landing.)
 
     - A new game mode: only guess values.
     
