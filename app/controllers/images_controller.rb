@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :edit, :update, :destroy]
+  before_action :set_image, only: [:show, :edit, :update, :destroy, :play]
 
   def index
     @images = Image.all
@@ -8,6 +8,10 @@ class ImagesController < ApplicationController
   end
 
   def show
+    @round = Round.new()
+  end
+
+  def play
     @round = Round.new()
     @image.spots.count.times { @round.guesses.build }
     @guesses = @round.guesses
