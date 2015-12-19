@@ -1,0 +1,32 @@
+<header>
+  <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
+    <h1>Color Quiz</h1>
+</header>
+
+    <%= render partial: "images/canvas", locals: {image: @image} %>
+
+    <%= form_for(@round, :remote => true) do |round_form| %>
+        <%= round_form.hidden_field :image_id, value: @image.id %>
+        <%= content_tag :table do %>
+            <tr>
+                <%= round_form.fields_for :guesses, @round.guesses do |round_fields| %>
+                    <% if round_fields.index == 5 %>
+                        </tr>
+                        <tr>
+                    <% end %>
+                    <td class="guess">
+                        <div class="semi left"></div><div class="semi right"></div>
+                        <input type='text' class="full" />
+                        <%= round_fields.hidden_field :color %>
+                        <%= round_fields.hidden_field :spot_id, value: @image.spots[round_fields.index][:id] %>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+        <%= submit_tag %>
+    <% end %>
+    <%= submit_tag value = "Fill circles", id: "defaults" %>
+    <div id="roundResults"></div>
+    <input type="color">
+</main>
+

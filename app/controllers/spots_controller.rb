@@ -10,6 +10,10 @@ class SpotsController < ApplicationController
   # GET /spots/1
   # GET /spots/1.json
   def show
+    respond_to do |format|
+      # format.html { redirect_to @message } # no js fallback
+      format.js { }
+    end
   end
 
   # GET /spots/new

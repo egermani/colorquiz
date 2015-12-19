@@ -2,11 +2,8 @@
 <p>Click on the image to place a new spot. A selected spot can be deleted by pressing backspace, or scaled with the left and right arrow keys. It may also be dragged around.</p>
 
 <%= javascript_include_tag "edit", type: "text/paperscript", canvas: "myCanvas" %>
-<%= content_tag(:main, style: "width: #{@image.width}px") do %>
-    <%= content_tag(:canvas, id: "myCanvas", width: @image.width , height: @image.height, data: {spots: @image.spots}) do %>
-        <%= image_tag(@image.img.url(:full), id: "game-image") %>
-    <% end %>
-    <%= form_tag update_image_path, :id => "spot_submit" do %>
-        <%= submit_tag "Submit" %>
-    <% end %>
+    <%= render partial: "images/canvas", locals: {image: @image} %>
+
+<%= form_tag update_image_path, :id => "spot_submit" do %>
+    <%= submit_tag "Submit" %>
 <% end %>

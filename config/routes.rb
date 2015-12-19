@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
+  get 'images/:id/play' => 'images#play', as: :play_image
   get 'game/result'
   post 'game/result'
 
