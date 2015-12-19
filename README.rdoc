@@ -36,6 +36,8 @@ MVP User stories
     - Welcome/explanation page/how to play and FAQ. (Courses on this landing.)
 
     - A new game mode: only guess values.
+
+    - Some really light achievements in the user profiles, bingos and so forth.
     
     - Let certain users create their own quizzes. Like designing a golf course -- you put together a set of "holes", and colors to pick on each. The designer then includes some helpful tips in case the guesser misses, like "Reflections are typically 2 steps darker than the sky, etc", etc.
     
@@ -55,6 +57,12 @@ MVP User stories
 The HK effect and related additivity failures demonstrate that brightness/lightness and hue purity are not independent dimensions: one attribute affects the other depending on the level or intensity of both. We saw a similar interdependence of hue purity and brightness contrast in measures of brilliance, and it is a general feature of color vision. It implies that our idea of color as separable colormaking attributes or dimensions, each varying independently of the others, misrepresents the integrated and highly dynamic nature of color perception.
 
 https://en.wikipedia.org/wiki/Helmholtz%E2%80%93Kohlrausch_effect
+
+https://en.wikipedia.org/wiki/Contrast_effect
+
+https://en.wikipedia.org/wiki/Mach_bands
+
+http://www.webexhibits.org/colorart/index.html
 
 === Acknowledgments
 
