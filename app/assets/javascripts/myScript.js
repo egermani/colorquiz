@@ -77,8 +77,11 @@ $(".full").spectrum({
         RGB2XYZ();
         XYZ2Lab();
         $("#labSlider").val(Lab.L);
+        $("#labSlider").next().html(Lab.L.toFixed(2));
         $("#aSlider").val(Lab.a);
+        $("#aSlider").next().html(Lab.a.toFixed(2));
         $("#bSlider").val(Lab.b);
+        $("#bSlider").next().html(Lab.b.toFixed(2));
     },
     change: function(color) {
         // debugger;
@@ -107,6 +110,8 @@ function euclidean_distance(firstTuple, secondTuple) {
 };
 
 $( document ).ready(function () {
+    GetRGBModel(11);
+    GetAdaptation();
 
     // When the form is submitted:
     // 1.) Iterate through the table cells and find the avgColor
