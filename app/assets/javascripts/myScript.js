@@ -76,8 +76,8 @@ $(".full").spectrum({
         RGB.B = color._b / 255;
         RGB2XYZ();
         XYZ2Lab();
-        $("#labSlider").val(Lab.L);
-        $("#labSlider").next().html(Lab.L.toFixed(2));
+        $("#LSlider").val(Lab.L);
+        $("#LSlider").next().html(Lab.L.toFixed(2));
         $("#aSlider").val(Lab.a);
         $("#aSlider").next().html(Lab.a.toFixed(2));
         $("#bSlider").val(Lab.b);
@@ -109,8 +109,18 @@ function euclidean_distance(firstTuple, secondTuple) {
     return Math.sqrt(sums)
 };
 
+function hexBind(number) {
+    if (number < 0) {
+        return 0
+    } else if (number > 1) {
+        return 1
+    } else {
+        return number
+    };
+}
+
 function tinyRGB() {
-    return tinycolor.fromRatio({r:RGB.R, g:RGB.G, b:RGB.B}).toHexString()
+    return tinycolor.fromRatio({r:hexBind(RGB.R), g:hexBind(RGB.G), b:hexBind(RGB.B)}).toHexString()
 };
 
 $( document ).ready(function () {
