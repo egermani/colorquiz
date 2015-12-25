@@ -129,4 +129,6 @@ $( document ).ready(function () {
         $(".semi.left").css("background-color", "#FFF")
         $(".sp-light+input[type=hidden]").val("#FFF")
     })
+
+    $("input[type=range]").on("input", function(){console.log(this.value)});
 });
