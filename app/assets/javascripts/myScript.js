@@ -71,6 +71,14 @@ $(".full").spectrum({
     move: function(color) {
         $(this).siblings(".semi")
         .css("background-color", color.toHexString());
+        RGB.R = color._r / 255;
+        RGB.G = color._g / 255;
+        RGB.B = color._b / 255;
+        RGB2XYZ();
+        XYZ2Lab();
+        $("#labSlider").val(Lab.L);
+        $("#aSlider").val(Lab.a);
+        $("#bSlider").val(Lab.b);
     },
     change: function(color) {
         // debugger;
@@ -130,5 +138,7 @@ $( document ).ready(function () {
         $(".sp-light+input[type=hidden]").val("#FFF")
     })
 
-    $("input[type=range]").on("input", function(){console.log(this.value)});
+    $("input[type=range]").on("input", function(){
+        $(this).next().html(this.value)
+    });
 });

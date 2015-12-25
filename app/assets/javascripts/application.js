@@ -16,5 +16,6 @@
 //= require spectrum/spectrum.js
 //= require color-diff/lib/convert.js
 //= require color-diff/lib/diff.js
+//= require brucelindbloom.js
 
 // require edit
