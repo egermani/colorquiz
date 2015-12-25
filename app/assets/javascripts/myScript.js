@@ -154,8 +154,9 @@ $( document ).ready(function () {
         Lab.b = Number($("#bSlider").val());
         Lab2XYZ();
         XYZ2RGB();
-        $('input[type=radio]:checked').siblings(".semi")
-                                      .css("background-color", tinyRGB());
-        $('input[type=radio]:checked').siblings(".full").spectrum("set", tinyRGB())
+        var checked = $('input[type=radio]:checked')
+        checked.siblings(".semi").css("background-color", tinyRGB());
+        checked.siblings(".full").spectrum("set", tinyRGB());
+        checked.siblings("input[type=hidden]").first().val(tinyRGB());
     });
 });
