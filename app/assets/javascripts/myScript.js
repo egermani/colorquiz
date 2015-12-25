@@ -109,6 +109,10 @@ function euclidean_distance(firstTuple, secondTuple) {
     return Math.sqrt(sums)
 };
 
+function tinyRGB() {
+    return tinycolor.fromRatio({r:RGB.R, g:RGB.G, b:RGB.B}).toHexString()
+};
+
 $( document ).ready(function () {
     GetRGBModel(11);
     GetAdaptation();
@@ -144,6 +148,14 @@ $( document ).ready(function () {
     })
 
     $("input[type=range]").on("input", function(){
-        $(this).next().html(this.value)
+        $(this).next().html(this.value);
+        Lab.L = Number($("#LSlider").val());
+        Lab.a = Number($("#aSlider").val());
+        Lab.b = Number($("#bSlider").val());
+        Lab2XYZ();
+        XYZ2RGB();
+        $('input[type=radio]:checked').siblings(".semi")
+                                      .css("background-color", tinyRGB());
+        $('input[type=radio]:checked').siblings(".full").spectrum("set", tinyRGB())
     });
 });
