@@ -19,6 +19,7 @@
                         <input type='text' class="full" />
                         <%= round_fields.hidden_field :color %>
                         <%= round_fields.hidden_field :spot_id, value: @image.spots[round_fields.index][:id] %>
+                        <%= radio_button_tag(:active, round_fields.index) %>
                     </td>
                 <% end %>
             </tr>
@@ -27,6 +28,9 @@
     <% end %>
     <%= submit_tag value = "Fill circles", id: "defaults" %>
     <div id="roundResults"></div>
-    <input type="color">
+    <input type="color"><br>
+    <input id="LSlider" type="range" min="0" max="100" step=".01"/><span>50</span><br>
+    <input id="aSlider" type="range" min="-100" max="100" step=".01"/><span>0</span><br>
+    <input id="bSlider" type="range" min="-100" max="100" step=".01"/><span>0</span><br>
 </main>
 

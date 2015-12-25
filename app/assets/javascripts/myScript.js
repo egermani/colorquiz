@@ -71,6 +71,17 @@ $(".full").spectrum({
     move: function(color) {
         $(this).siblings(".semi")
         .css("background-color", color.toHexString());
+        RGB.R = color._r / 255;
+        RGB.G = color._g / 255;
+        RGB.B = color._b / 255;
+        RGB2XYZ();
+        XYZ2Lab();
+        $("#labSlider").val(Lab.L);
+        $("#labSlider").next().html(Lab.L.toFixed(2));
+        $("#aSlider").val(Lab.a);
+        $("#aSlider").next().html(Lab.a.toFixed(2));
+        $("#bSlider").val(Lab.b);
+        $("#bSlider").next().html(Lab.b.toFixed(2));
     },
     change: function(color) {
         // debugger;
@@ -98,7 +109,13 @@ function euclidean_distance(firstTuple, secondTuple) {
     return Math.sqrt(sums)
 };
 
+function tinyRGB() {
+    return tinycolor.fromRatio({r:RGB.R, g:RGB.G, b:RGB.B}).toHexString()
+};
+
 $( document ).ready(function () {
+    GetRGBModel(11);
+    GetAdaptation();
 
     // When the form is submitted:
     // 1.) Iterate through the table cells and find the avgColor
@@ -129,4 +146,17 @@ $( document ).ready(function () {
         $(".semi.left").css("background-color", "#FFF")
         $(".sp-light+input[type=hidden]").val("#FFF")
     })
+
+    $("input[type=range]").on("input", function(){
+        $(this).next().html(this.value);
+        Lab.L = Number($("#LSlider").val());
+        Lab.a = Number($("#aSlider").val());
+        Lab.b = Number($("#bSlider").val());
+        Lab2XYZ();
+        XYZ2RGB();
+        var checked = $('input[type=radio]:checked')
+        checked.siblings(".semi").css("background-color", tinyRGB());
+        checked.siblings(".full").spectrum("set", tinyRGB());
+        checked.siblings("input[type=hidden]").first().val(tinyRGB());
+    });
 });
