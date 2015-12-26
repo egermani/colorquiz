@@ -76,8 +76,8 @@ $(".full").spectrum({
         RGB.B = color._b / 255;
         RGB2XYZ();
         XYZ2Lab();
-        $("#labSlider").val(Lab.L);
-        $("#labSlider").next().html(Lab.L.toFixed(2));
+        $("#LSlider").val(Lab.L);
+        $("#LSlider").next().html(Lab.L.toFixed(2));
         $("#aSlider").val(Lab.a);
         $("#aSlider").next().html(Lab.a.toFixed(2));
         $("#bSlider").val(Lab.b);
