@@ -19,7 +19,7 @@
   <tbody>
     <% @images.each do |image| %>
       <tr>
-        <td><%= image_tag(image.img.url(:thumb)) %></td>
+        <td><%= link_to image_tag(image.img.url(:thumb)), play_image_path(image) %></td>
         <td><%= image.rounds.count %></td>
         <td><%= image.calculate_par %></td>
         <td><%= link_to 'Show', image %></td>
