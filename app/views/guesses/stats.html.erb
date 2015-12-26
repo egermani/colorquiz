@@ -43,7 +43,7 @@
             .attr("width", w)
             .attr("height", h);
 
-      d3.json("data", function (error, data) {
+      d3.json("stats.json", function (error, data) {
           if (error) throw error;
 
           svg.selectAll("rect")
