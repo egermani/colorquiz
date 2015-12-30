@@ -11,4 +11,20 @@ class GuessesController < ApplicationController
       format.json { render :json => Guess.all.order(created_at: :asc), :only => [:created_at, :delta] } 
     end
   end
+
+  def plm
+    # Perceptual learning module
+    respond_to do |format|
+      format.html { }
+      format.js { } 
+    end
+  end
+
+  def create
+    # Perceptual learning module
+    @actual = params[:actual]
+    respond_to do |format|
+      format.js { } 
+    end
+  end
 end
