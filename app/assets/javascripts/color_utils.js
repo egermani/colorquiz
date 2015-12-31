@@ -1,6 +1,15 @@
+function clampRGB(number) {
+    if (number < 0) {
+        return 0
+    } else if (number > 1) {
+        return 1
+    } else {
+        return number
+    };
+}
+
 function tinyRGB() {
-    
-    return tinycolor.fromRatio({r:RGB.R, g:RGB.G, b:RGB.B}).toHexString()
+    return tinycolor.fromRatio({r:clampRGB(RGB.R), g:clampRGB(RGB.G), b:clampRGB(RGB.B)}).toHexString()
 };
 
 function RGB2Lab() {
