@@ -109,10 +109,6 @@ function euclidean_distance(firstTuple, secondTuple) {
     return Math.sqrt(sums)
 };
 
-function tinyRGB() {
-    return tinycolor.fromRatio({r:RGB.R, g:RGB.G, b:RGB.B}).toHexString()
-};
-
 $( document ).ready(function () {
     GetRGBModel(11);
     GetAdaptation();
