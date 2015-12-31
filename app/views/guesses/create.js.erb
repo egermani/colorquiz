@@ -1,23 +1,20 @@
-// var orgRGB = {
-//     r: parseInt("<%= j(@actual.slice(1, 5))%>", 16));
-// };
-var string = "<%= j(@actual) %>"
-// console.log("R is equal to " + "<%= j(@actual[1..2]) %>");
-// console.log("G is equal to " + "<%= j(@actual[3..4]) %>");
-// console.log("B is equal to " + "<%= j(@actual[5..6]) %>");
-var RGB = {
-    R: parseInt("<%= j(@actual[1..2]) %>", 16) / 255,
-    G: parseInt("<%= j(@actual[3..4]) %>", 16) / 255,
-    B: parseInt("<%= j(@actual[5..6]) %>", 16) / 255,
-};
 
-// RGB.g = parseInt("<%= j(@actual.slice(2, 3))%>", 16));
-// RGB.b = parseInt("<%= j(@actual.slice(4, 5))%>", 16));
 
 console.log("hey buddy!");
+var orgLab = RGB2Lab();
 
-// var i = 0
-// while (i < 10) {
-//     console.log(i);
-//     i++;
-// }
+var i = 0
+while (i < 10) {
+    // 3 times do
+        // pick a number from 5 to 15
+        var change = randomIntFromInterval(5,15);
+        // pick a sign
+        var sign = (Math.floor(Math.random() * 2) == 0) ? -1 : 1;
+        change = change * sign;
+        // add number to original lab value
+        original += change;
+        var Lab = orgLab
+    // Append circle to distractors
+    console.log(i);
+    i++;
+}
