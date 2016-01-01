@@ -3,11 +3,5 @@
     <%= color_field_tag 'actual', "#8F59F6" %>
     <%= button_tag 'submit' %>
 <% end %> 
-<%= render :partial => 'grayscaleramp' %>
 <%= content_tag(:div, "", id: "distractors") %>
 
-<script type="text/javascript">
-    var color = d3.scale.linear()
-    .domain([0,100])
-    .range([d3.lab(0,0,0), d3.lab(100,0,0)]);
-</script>

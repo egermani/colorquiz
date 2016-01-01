@@ -1,29 +1,38 @@
-<p id="notice"><%= notice %></p>
+<%= render :partial => "images/canvas", locals: {image: @spot.image} %>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.7.0/d3-legend.min.js"></script>
+<script type="text/javascript">
+    var w = 1000;
+    var h = 500;
+    var svg = d3.select("body")
+      .append("svg")
+      .attr("width", w)
+      .attr("height", h);
 
-<p>
-  <strong>Image:</strong>
-  <%= @spot.image %>
-</p>
+    var linear = d3.scale.linear()
+    .domain([0,100])
+    .range([d3.lab(0,0,0), d3.lab(100,0,0)]);
 
-<p>
-  <strong>Color:</strong>
-  <%= @spot.color %>
-</p>
+    var svg = d3.select("svg");
 
-<p>
-  <strong>X:</strong>
-  <%= @spot.x %>
-</p>
+    svg.append("g")
+      .attr("class", "legendLinear")
+      .attr("transform", "translate(20,20)");
 
-<p>
-  <strong>Y:</strong>
-  <%= @spot.y %>
-</p>
+    var legendLinear = d3.legend.color()
+      .shapeWidth(40)
+      .shapeHeight(40)
+      .shapePadding(6)
+      .labelFormat(d3.format(".f"))
+      .on("cellclick", function(d){ 
+        console.log(
+            d3.lab($(this).children().last().html(), 0, 0).toString()
+            );})
+      .cells(21)
+      .orient('horizontal')
+      .scale(linear);
 
-<p>
-  <strong>Radius:</strong>
-  <%= @spot.radius %>
-</p>
+    svg.select(".legendLinear")
+      .call(legendLinear);
 
-<%= link_to 'Edit', edit_spot_path(@spot) %> |
-<%= link_to 'Back', spots_path %>
+</script>
