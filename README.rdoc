@@ -66,7 +66,12 @@ https://en.wikipedia.org/wiki/Mach_bands
 
 http://www.webexhibits.org/colorart/index.html
 
+https://en.wikipedia.org/wiki/Perceptual_learning
+
 === Acknowledgments
+
+
+http://bl.ocks.org/mbostock/9f37cc207c0cb166921b
 
 http://www.brucelindbloom.com/
 Took his javascript for Lab to RGB calculation
