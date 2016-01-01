@@ -1,4 +1,4 @@
-<%- headers = ['Created', 'Email'] -%>
+<%- headers = ['Created', 'Delta'] -%>
 <%= CSV.generate_line headers %>
 <%- Guess.all.order(created_at: :asc).each do |guess| -%>
 <%= CSV.generate_line([guess.created_at, guess.delta]) -%>
