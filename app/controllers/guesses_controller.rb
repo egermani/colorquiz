@@ -9,6 +9,10 @@ class GuessesController < ApplicationController
     respond_to do |format|
       format.html {  }
       format.json { render :json => Guess.all.order(created_at: :asc), :only => [:created_at, :delta] } 
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"guesses.csv\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
     end
   end
 
