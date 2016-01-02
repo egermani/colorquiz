@@ -1,1 +1,9 @@
-$("#canvas").replaceWith("<%= j(render(:partial => 'images/canvas', :locals => {image: @spot.image, spots: @spot})) %>");
+var raster = new paper.Raster({
+    source: "/system/images/imgs/000/000/041/full/sung-choi-dockweiler-1920.jpg?1451678990",
+});
+
+paper.project.activeLayer.children[0].replaceWith(raster)
+
+raster.position = paper.view.center
+
+debugger;
