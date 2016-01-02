@@ -1,9 +1,14 @@
 var raster = new paper.Raster({
-    source: "/system/images/imgs/000/000/041/full/sung-choi-dockweiler-1920.jpg?1451678990",
+    source: "<%= j(@spot.image.img.url(:full)) %>"
 });
-
+var $canvas = $(paper.view.element);
+$canvas.parent().attr('style', "width: " + "<%= j(@spot.image.width.to_s)%>");
+paper.view.update(true);
 paper.project.activeLayer.children[0].replaceWith(raster)
-
-raster.position = paper.view.center
-
-debugger;
+paper.view.update(true);
+$canvas.attr('width', "<%= j(@spot.image.width.to_s)%>");
+$canvas.attr('height', "<%= j(@spot.image.height.to_s)%>");
+paper.view.update(true);
+raster.position = paper.view.center;
+paper.view.update(true);
+// debugger;
