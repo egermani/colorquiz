@@ -1,7 +1,7 @@
 var spots = []
 var texts = []
 var spotCounter = 0;
-raster = new Raster('game-image');
+var raster = new Raster('game-image');
 // var raster = new Raster('game-image');
 
 // Move the raster to the center of the view
@@ -52,6 +52,9 @@ function Spot(spotSize, xCoord, yCoord, marker) {
 
 // For each spot associated with the image, create one, and push it into an array.
 var data = $('#myCanvas').data('spots');
+if (data.length === undefined) {
+    data = [data]
+};
 
 for (i = 0; i <= data.length - 1; i++) {
     spot = data[i];

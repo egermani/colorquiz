@@ -1,0 +1,4 @@
+<%= content_tag :h1, @quiz.name %>
+<%= content_tag :i, @quiz.description %>
+<p>This is 150 spots, presented in random order. The idea of this game is to play fast, so you'll only have a few second to make your guess. (Assuming I've got that feature working by now.)</p>
+<%= link_to "Play!", play_quiz_path(@quiz) %>

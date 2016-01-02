@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   get 'images/:id/play' => 'images#play', as: :play_image
+  get 'quizzes/:id/play' => 'quizzes#play', as: :play_quiz
   get 'game/result'
   post 'game/result'
 
@@ -28,7 +29,7 @@ Rails.application.routes.draw do
   resources :rounds
   resources :guesses
   resources :users, :only => :show
-  resources :quizzes, :only => [:show, :index, :play]
+  resources :quizzes, :only => [:show, :index]
   
   # Example resource route with options:
   #   resources :products do

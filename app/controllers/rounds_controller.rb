@@ -6,7 +6,6 @@ class RoundsController < ApplicationController
   end
 
   def create
-    p params
     @round = Round.new(round_params)
 
     respond_to do |format|
