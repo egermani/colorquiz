@@ -1,6 +1,7 @@
 <%= content_tag(:div, "", class: ["semi", "left"], style: "background-color: " + "#{guess.color}")%><%= content_tag(:div, "", class: ["semi", "right"], style: "background-color: " + "#{guess.spot.color}") %>
 <%= content_tag(:h3, "Score: #{Colorable.delta(guess, guess.spot)}")%>
 <%= content_tag(:p) do %>
+    <p>Name: <%= guess.guesser.name %></p>
     <%= content_tag(:p) do %>
         Your LAB guess: <%= guess.lab[0].round(2) %> / <%= guess.lab[1].round(2) %> / <%= guess.lab[2].round(2) %>
         <br/>
