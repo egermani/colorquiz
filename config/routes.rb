@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   get 'guesses/plm' => 'guesses#plm', as: :plm
   post 'guesses/palette' => 'guesses#create', as: :generate_palette
-  get 'guesses/stats' => 'guesses#stats', as: :guess_stats
+  get 'guesses/stats' => 'guesses#stats', as: :stats
   get 'guesses/data', :defaults => { :format => 'json' }
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :rounds

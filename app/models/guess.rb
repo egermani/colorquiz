@@ -5,6 +5,9 @@ class Guess < ActiveRecord::Base
   belongs_to :guesser, :class_name => "User"
   before_save :score
 
+  scope :value, -> { where(format: "value") }
+  scope :color, -> { where(format: "color") }
+
   def score
     self.delta ||= Colorable::delta(self, spot)
   end
