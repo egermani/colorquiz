@@ -1,4 +1,6 @@
-<%= render :partial => "images/canvas", locals: {image: @spot.image, spots: @spot} %>
+<%= content_tag :div, id: "canvas" do %>
+  <%= render :partial => "images/canvas", locals: {image: @spot.image, spots: @spot} %>
+<% end %>
 <script src="//d3js.org/d3.v3.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.7.0/d3-legend.min.js"></script>
 <script type="text/javascript">
@@ -24,10 +26,13 @@
       .shapeHeight(40)
       .shapePadding(6)
       .labelFormat(d3.format(".f"))
-      .on("cellclick", function(d){ 
-        console.log(
-            d3.lab($(this).children().last().html(), 0, 0).toString()
-            );})
+      .on("cellclick", function(d){
+            var guessValue = $(this).children().last().html();
+            var actualValue = $("#myCanvas").data().spots.color;
+            $("#guess_color").val(d3.lab(guessValue, 0, 0).toString());
+            alert("Your guess: " + guessValue + ". Actual: " + d3.lab(actualValue).l.toFixed(0))
+            $("#new_guess").submit();
+            })
       .cells(21)
       .orient('horizontal')
       .scale(linear);
@@ -36,3 +41,8 @@
       .call(legendLinear);
 
 </script>
+
+<%= form_for @guess do |f| %>
+  <%= f.hidden_field :color %>
+  <%= f.hidden_field :spot_id, value: @spot.id %>
+<% end %>

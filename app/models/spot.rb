@@ -3,6 +3,7 @@ class Spot < ActiveRecord::Base
   
   belongs_to :image
   has_many :guesses
+  has_and_belongs_to_many :quizzes, :through => :questions
 
   def distance
     # calculate euclidean distance from origin to determine numbering.

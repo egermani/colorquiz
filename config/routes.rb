@@ -6,12 +6,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'images#index'
+  root 'game#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
   get 'images/:id/play' => 'images#play', as: :play_image
+  get 'quizzes/:id/play' => 'quizzes#play', as: :play_quiz
   get 'game/result'
   post 'game/result'
 
@@ -28,6 +29,7 @@ Rails.application.routes.draw do
   resources :rounds
   resources :guesses
   resources :users, :only => :show
+  resources :quizzes, :only => [:show, :index]
   
   # Example resource route with options:
   #   resources :products do

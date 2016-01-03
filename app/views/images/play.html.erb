@@ -3,7 +3,7 @@
     <h1>Color Quiz</h1>
 </header>
 
-    <%= render partial: "images/canvas", locals: {image: @image} %>
+    <%= render partial: "images/canvas", locals: {image: @image, spots: @image.spots} %>
 
     <%= form_for(@round, :remote => true) do |round_form| %>
         <%= round_form.hidden_field :image_id, value: @image.id %>

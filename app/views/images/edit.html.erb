@@ -2,7 +2,7 @@
 <p>Click on the image to place a new spot. A selected spot can be deleted by pressing backspace, or scaled with the left and right arrow keys. It may also be dragged around.</p>
 
 <%= javascript_include_tag "edit", type: "text/paperscript", canvas: "myCanvas" %>
-    <%= render partial: "images/canvas", locals: {image: @image} %>
+    <%= render partial: "images/canvas", locals: {image: @image, spots: @image.spots} %>
 
 <%= form_tag update_image_path, :id => "spot_submit" do %>
     <%= submit_tag "Submit" %>

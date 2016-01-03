@@ -1,55 +1,11 @@
 <header>
-  <%= javascript_include_tag "myScript", type: "text/paperscript", canvas: "myCanvas" %>
     <h1>Color Quiz</h1>
 <!--     <p>The human eye is incredibly capable; you might not feel that way after trying this quiz. Color vision is contextual, and isolating a color from its context is a challenge. But if you get good at it, you'll paint better.</p>
  --></header>
 <main>
-<% @image = {width: 1024, height: 684} %>
-<%= content_tag :canvas, id: "myCanvas", height: @image[:height], width: @image[:width] do %>
-    <%= image_tag("lake-bled.jpg", id: "game-image") %>
-<% end %>
-
-    <%= form_tag game_result_path, method: "post" do %>
-        <table>
-            <tr>
-                <td>
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td>
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td>
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td>
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-                <td>
-                    <div class="semi left"></div><div class="semi right"></div>
-                    <input type='text' class="full" />
-                </td>
-            </tr>
-        </table>
-        <%= submit_tag("Submit") %>
-        <!-- <input id="form-submit" type="submit" value="submit"/> -->
-    <% end %>
-
-    <pre>
-        <ol>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ol>
-    </pre>
-
-    <form action="">
-        <input type="color">
-    </form>
+    <ul>
+        <li><%= link_to "Play individual images", images_path %></li>
+        <li><%= link_to "Value Guessing Game", quiz_path(Quiz.first) %></li>  
+    </ul>
 </main>
 

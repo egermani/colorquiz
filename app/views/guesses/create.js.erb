@@ -1,42 +1,17 @@
-// var orgRGB = {
-//     r: parseInt("<%= j(@actual.slice(1, 5))%>", 16));
-// };
-var string = "<%= j(@actual) %>"
-var startColor = tinycolor(string)
-// console.log("R is equal to " + "<%= j(@actual[1..2]) %>");
-// console.log("G is equal to " + "<%= j(@actual[3..4]) %>");
-// console.log("B is equal to " + "<%= j(@actual[5..6]) %>");
-var RGB = {
-    R: parseInt("<%= j(@actual[1..2]) %>", 16) / 255,
-    G: parseInt("<%= j(@actual[3..4]) %>", 16) / 255,
-    B: parseInt("<%= j(@actual[5..6]) %>", 16) / 255,
-};
-
-// RGB.g = parseInt("<%= j(@actual.slice(2, 3))%>", 16));
-// RGB.b = parseInt("<%= j(@actual.slice(4, 5))%>", 16));
-
-console.log("hey buddy!");
-
-// var i = 0
-// while (i < 10) {
-//     console.log(i);
-//     i++;
-// }
-var orgLab = RGB2Lab();
-
-var i = 0
-while (i < 10) {
-    Lab.L += jitterNumber(5,15);
-    Lab.a += jitterNumber(5,15);
-    Lab.b += jitterNumber(5,15);
-    console.log(Lab)
-    // Append circle to distractors
-    Lab2RGB();
-    console.log(RGB);
-    var color = tinyRGB();
-    console.log(color);
-    $("#distractors").append("<div style='width:20px;height:20px;background-color: " + color + "'></div>");
-    Lab = orgLab;
-    console.log(i);
-    i++;
-}
+paper.project.remove();
+debugger;
+paper.Project("#myCanvas");
+var raster = new paper.Raster({
+    source: "<%= j(@spot.image.img.url(:full)) %>"
+});
+var $canvas = $(paper.view.element);
+$canvas.parent().attr('style', "width: " + "<%= j(@spot.image.width.to_s)%>");
+paper.view.update(true);
+paper.project.activeLayer.children[0].replaceWith(raster)
+paper.view.update(true);
+$canvas.attr('width', "<%= j(@spot.image.width.to_s)%>");
+$canvas.attr('height', "<%= j(@spot.image.height.to_s)%>");
+paper.view.update(true);
+raster.position = paper.view.center;
+paper.view.update(true);
+// debugger;

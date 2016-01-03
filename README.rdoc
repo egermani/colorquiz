@@ -70,6 +70,8 @@ https://en.wikipedia.org/wiki/Perceptual_learning
 
 === Acknowledgments
 
+https://www.jasondavies.com/maps/random-points/
+Jason Davies poisson sampling for unit spheres
 
 http://bl.ocks.org/mbostock/9f37cc207c0cb166921b
 
