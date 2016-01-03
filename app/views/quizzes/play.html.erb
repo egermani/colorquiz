@@ -26,8 +26,11 @@
       .shapeHeight(40)
       .shapePadding(6)
       .labelFormat(d3.format(".f"))
-      .on("cellclick", function(d){ 
-            $("#guess_color").val(d3.lab($(this).children().last().html(), 0, 0).toString());
+      .on("cellclick", function(d){
+            var guessValue = $(this).children().last().html();
+            var actualValue = $("#myCanvas").data().spots.color;
+            $("#guess_color").val(d3.lab(guessValue, 0, 0).toString());
+            alert("Your guess: " + guessValue + ". Actual: " + d3.lab(actualValue).l.toFixed(0))
             $("#new_guess").submit();
             })
       .cells(21)
@@ -39,7 +42,7 @@
 
 </script>
 
-<%= form_for @guess, remote: true do |f| %>
+<%= form_for @guess do |f| %>
   <%= f.hidden_field :color %>
   <%= f.hidden_field :spot_id, value: @spot.id %>
 <% end %>

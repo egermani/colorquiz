@@ -35,7 +35,7 @@ class GuessesController < ApplicationController
       if @guess.save
         session[:last_q] = session[:last_q].to_i + 1
         @spot = Question.next(session[:last_q]).first.spot
-        format.html { }
+        format.html { redirect_to play_quiz_path(session[:quiz_id])}
         format.json { render :show, status: :created, location: @guess }
         format.js { }
       else

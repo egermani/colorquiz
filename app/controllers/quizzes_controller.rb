@@ -18,5 +18,6 @@ class QuizzesController < ApplicationController
   private
     def set_quiz
       @quiz = Quiz.find(params[:id])
+      session[:quiz_id] = params[:id]
     end
 end

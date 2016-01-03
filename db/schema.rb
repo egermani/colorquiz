@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160101234908) do
+ActiveRecord::Schema.define(version: 20160103022523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20160101234908) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float    "delta"
+    t.string   "format"
   end
 
   add_index "guesses", ["round_id"], name: "index_guesses_on_round_id", using: :btree
