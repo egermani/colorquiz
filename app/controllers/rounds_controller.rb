@@ -38,6 +38,10 @@ class RoundsController < ApplicationController
   end
 
   def round_params
-    params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id])
+    parameters = params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id])
+    if current_user
+      parameters["guesses_attributes"].each { |key, value| value.merge!({"guesser_id" => current_user.id})}
+    end
+    return parameters
   end
 end
