@@ -7,7 +7,14 @@ class RoundsController < ApplicationController
 
   def create
     @round = Round.new(round_params)
-
+    if current_user
+      p "There is a current user"
+      @round.user = User.find(current_user.id)
+      @round.guesses.each do |guess|
+        guess.guesser_id = current_user.id
+        guess.save
+      end
+    end
     respond_to do |format|
       if @round.save
         format.html { redirect_to @round, notice: 'Spot was successfully created.' }
