@@ -8,12 +8,8 @@ class RoundsController < ApplicationController
   def create
     @round = Round.new(round_params)
     if current_user
-      p "There is a current user"
       @round.user = User.find(current_user.id)
-      @round.guesses.each do |guess|
-        guess.guesser_id = current_user.id
-        guess.save
-      end
+      @round.guesses.update_all(guesser_id: current_user.id)
     end
     respond_to do |format|
       if @round.save

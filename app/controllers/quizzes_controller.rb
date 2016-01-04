@@ -11,7 +11,7 @@ class QuizzesController < ApplicationController
 
   def play
     @guess = Guess.new
-    last_q = session.fetch(:last_q) { |id| session[:last_q] = -1 }
+    last_q = session.fetch(:last_q) { |id| session[:last_q] = Quiz.id.questions.pluck(:id).min - 1 }
     @spot = Question.next(last_q).first.spot
   end
 
