@@ -31,6 +31,7 @@ class GuessesController < ApplicationController
     #   format.js { } 
     # end
     @guess = Guess.new(guess_params)
+    @guess.guesser = User.find(current_user.id) if current_user
     respond_to do |format|
       if @guess.save
         session[:last_q] = session[:last_q].to_i + 1
