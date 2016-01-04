@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'quizzes/:id/play' => 'quizzes#play', as: :play_quiz
   get 'game/result'
   post 'game/result'
+  # get 'spots' => 'spots#index', as: :spots
+  resources :spots
 
   post 'images/:id/edit' => 'images#update', as: :update_image
 
