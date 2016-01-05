@@ -1,3 +1,8 @@
+.ramp {
+    display: block;
+    margin: 0 auto;
+}
+
 input[type=range] {
     /*removes default webkit styles*/
     -webkit-appearance: none;
