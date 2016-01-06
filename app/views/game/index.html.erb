@@ -1,8 +1,27 @@
 <header>
-    <h1>Color Quiz</h1>
-<!--     <p>The human eye is incredibly capable; you might not feel that way after trying this quiz. Color vision is contextual, and isolating a color from its context is a challenge. But if you get good at it, you'll paint better.</p>
- --></header>
+    <h1>Color Quiz Beta</h1>
+</header>
 <main>
+    <h2>What's this site?</h2>
+    <p>Hello! My name's Erik, and I've been painting pretty casually for a few years now. Up till recently I've worked predominantly in black and white. Transitioning to color has been a challenge: I've had to wean myself off that Crayola sense of color we all had in grade school. "Well, now I need some grass, so I better get grass green." But grass is practically yellow in most light. And skies were way brighter than I thought. And whenever I made my own palette, the colors were strange -- too muted, too vivid, somehow off. And then I started to see these crazy color illusions.</p>
+
+    <%= image_tag Image.find_by(img_file_name: "Checkerboard_Illusion_Gurney.sm.jpg").img.url(:full) %>
+    <i>Image by James Gurney.</i>
+
+    <p>In that image, squares 1 and 2 have the same brightness.</p>
+
+    <p>With so much to learn, I wanted a way to develop my color sense that corresponds with everything I've read about learning and practice. That meant I needed something that would let me focus very particularly on color, get in a lot of repetition, get good and timely feedback. So here's Color Quiz. The app will show you an image, and you will try to match its color or guess its value, depending on what mode you play in.</p>
+
+    <p>The hope is that this approach will help novice painters like myself realize more quickly to see past the tricks that color can play on our eyes, and teach ourselves how to build palettes without being a slave to the eyedropper and reference material.</p>
+
+    <h2>Info for testers</h2>
+
+    <p>As more people play this game, we'll be able to empirically describe the eye of a painter, where it's strong and where it's weak. Are there general mistakes that we all make? How strongly does my color blindess influence me? What value ranges and what hues are we most accurate at recognizing? There's a great body of received knowledge on this subject. Landscape painters can tell you that colors get lighter and bluer closer towards the horizon. My hope is that this game will uncover more of those insights.</p>
+
+    <p>So please check out the game, play a few rounds. That will help me get a sense of what the par fives are, so to speak.</p>
+
+    <p>Right now I'm most interested in the value quiz, which is 150 questions long, but should only take a few minutes.</p>
+
     <ul>
         <li><%= link_to "Play individual images", images_path %></li>
         <li><%= link_to "Value Guessing Game", quiz_path(Quiz.first) %></li> 
