@@ -9,7 +9,8 @@
     var svg = d3.select("body")
       .append("svg")
       .attr("width", w)
-      .attr("height", h);
+      .attr("height", h)
+      .attr("class", "ramp");
 
     var linear = d3.scale.linear()
     .domain([0,100])
