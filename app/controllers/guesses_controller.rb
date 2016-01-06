@@ -1,4 +1,6 @@
 class GuessesController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     # @guesses = Guess.all.sort_by {|guess| guess.spot.lab[0]}
     @guesses = Guess.all.sort_by {|guess| guess.delta}
