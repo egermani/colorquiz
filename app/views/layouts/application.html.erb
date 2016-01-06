@@ -12,6 +12,9 @@
 <% end %>
   |
 <%= link_to "Home", root_path, :class => 'navbar-link'  %>
+<% if flash[:alert] %>
+    <div class="notice"><%= flash[:alert] %></div>
+  <% end %>
   <title>Color Quiz Beta</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
