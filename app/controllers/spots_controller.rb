@@ -1,5 +1,6 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /spots
   # GET /spots.json

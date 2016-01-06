@@ -1,5 +1,6 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :destroy]
+  load_and_authorize_resource
 
   def index
     @rounds = Round.all.sort_by(&:created_at).reverse!

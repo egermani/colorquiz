@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'cancancan', '~> 1.10'
+
 # ciede2000 formula
 gem 'color_difference'
 
