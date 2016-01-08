@@ -1,49 +1,8 @@
 <%= content_tag :div, id: "canvas" do %>
   <%= render :partial => "images/canvas", locals: {image: @spot.image, spots: @spot} %>
 <% end %>
-<script src="//d3js.org/d3.v3.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/1.7.0/d3-legend.min.js"></script>
-<script type="text/javascript">
-    var w = 1000;
-    var h = 500;
-    var svg = d3.select("body")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h)
-      .attr("class", "ramp");
-
-    var linear = d3.scale.linear()
-    .domain([0,100])
-    .range([d3.lab(0,0,0), d3.lab(100,0,0)]);
-
-    var svg = d3.select("svg");
-
-    svg.append("g")
-      .attr("class", "legendLinear")
-      .attr("transform", "translate(20,20)");
-
-    var legendLinear = d3.legend.color()
-      .shapeWidth(40)
-      .shapeHeight(40)
-      .shapePadding(6)
-      .labelFormat(d3.format(".f"))
-      .on("cellclick", function(d){
-            var guessValue = $(this).children().last().html();
-            var actualValue = $("#myCanvas").data().spots.color;
-            $("#guess_color").val(d3.lab(guessValue, 0, 0).toString());
-            alert("Your guess: " + guessValue + ". Actual: " + d3.lab(actualValue).l.toFixed(0))
-            $("#new_guess").submit();
-            })
-      .cells(21)
-      .orient('horizontal')
-      .scale(linear);
-
-    svg.select(".legendLinear")
-      .call(legendLinear);
-
-</script>
-
-<%= form_for @guess do |f| %>
-  <%= f.hidden_field :color %>
-  <%= f.hidden_field :spot_id, value: @spot.id %>
+<% if @quiz.format == "value" %>
+  <%= render :partial => "grayramp" %>
+<% else %>
+  <%= render :partial => "grayramp" %>
 <% end %>

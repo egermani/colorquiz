@@ -30,6 +30,8 @@ MVP User stories
 
 === Potential/To-Do Features
 
+    - Show the user's name as "You" when reviewing their guesses.
+
     - Allow a guest user to create an account and transfer their previously made guesses to it.
 
     - LAB sliders for color picking instead of just the spectrum picker.

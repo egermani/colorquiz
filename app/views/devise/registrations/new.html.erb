@@ -1,0 +1,51 @@
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true %><br />
+    (Give a phony email if you don't feel like using your real one -- as long as there's an @ sign in there somewhere.)
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  </div>
+
+  <h3>Questions for Artists</h3>
+  <p><i>Optional, but useful for further development.</i></p>
+
+  <div class="field">
+    <%= f.label :years_active, "How many years have you been seriously practicing art?" %><br />
+    <%= f.number_field :years_active, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hours_per_week, "Please estimate how many hours a week have you spent on art in the past year, on average." %><br />
+    <%= f.number_field :hours_per_week, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :preferred_medium, "Preferred medium?" %>
+  Digital
+  <%= f.radio_button :preferred_medium, "Digital" %>
+  Traditional
+    <%= f.radio_button :preferred_medium, "Traditional" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
