@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+/*body {
+  font: 10px sans-serif;
+}*/
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+  stroke-width: 1.5px;
+}
+
+</style>
+<body>
+<p>This page is in progress.</p>
+<script src="//d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript">
+
+      //Width and height
+      var w = 960;
+      var h = 500;
+      var barPadding = 0;
+      var yScale = 10;
+      
+      var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
+              11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+      
+      //Create SVG element
+      var svg = d3.select("body")
+            .append("svg")
+            .attr("width", w)
+            .attr("height", h);
+
+      d3.json("stats.json", function (error, data) {
+          if (error) throw error;
+
+          svg.selectAll("rect")
+             .data(data)
+             .enter()
+             .append("rect")
+             .attr("x", function(d, i) {
+                return i * (w / data.length);
+             })
+             .attr("y", function(d) {
+                return h - (d.delta * yScale);
+             })
+             .attr("width", w / data.length - barPadding)
+             .attr("height", function(d) {
+                return d.delta * yScale;
+             });
+      });
+      
+    </script>
+    <p>This chart shows all guesses made -- both color and value, which accounts for the large spikes.</p>
+</body>

@@ -1,8 +1,7 @@
 class GameController < ApplicationController
-  def index
-  end
 
-  def result
-    
+  def splash
+    @user = User.new
+    render :layout => false
   end
 end

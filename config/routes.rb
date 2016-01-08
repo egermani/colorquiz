@@ -1,29 +1,38 @@
 Rails.application.routes.draw do
   devise_for :users
-  get 'rounds/create'
-
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'images#index'
+  root 'game#splash'
+
+  get 'quizzes/:id/debug' => 'quizzes#debug'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
   get 'images/:id/play' => 'images#play', as: :play_image
+  get 'quizzes/:id/play' => 'quizzes#play', as: :play_quiz
   get 'game/result'
   post 'game/result'
+  # get 'spots' => 'spots#index', as: :spots
+  resources :spots
 
   post 'images/:id/edit' => 'images#update', as: :update_image
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
+  get 'guesses/plm' => 'guesses#plm', as: :plm
+  post 'guesses/palette' => 'guesses#create', as: :generate_palette
+  get 'guesses/stats' => 'guesses#stats', as: :stats
+  get 'guesses/data', :defaults => { :format => 'json' }
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :rounds
   resources :guesses
   resources :users, :only => :show
+  resources :quizzes, :only => [:show, :index]
   
   # Example resource route with options:
   #   resources :products do

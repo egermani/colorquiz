@@ -20,8 +20,7 @@ MVP User stories
 
   The Stats Page
   ---------------
-    - After I play a round, I want to see my statistics.
-      - This should be presented with natural language. Don't just tell me hue angle, tell me that it needs to be a little more yellow.
+    - After I play a round, I want to see my statistics, in graph and natural language form.
     - I want to be able to see my profile's statistics, which show my accuracy.
     - I'd like to know which colors I'm most and least accurate with.
 
@@ -31,6 +30,10 @@ MVP User stories
 
 === Potential/To-Do Features
 
+    - Show the user's name as "You" when reviewing their guesses.
+
+    - Allow a guest user to create an account and transfer their previously made guesses to it.
+
     - LAB sliders for color picking instead of just the spectrum picker.
 
     - User registration, authentication, authorization, and emailing
@@ -39,8 +42,6 @@ MVP User stories
 
     - A new game mode: only guess values.
 
-    - Some really light achievements in the user profiles, bingos and so forth.
-    
     - Let certain users create their own quizzes. Like designing a golf course -- you put together a set of "holes", and colors to pick on each. The designer then includes some helpful tips in case the guesser misses, like "Reflections are typically 2 steps darker than the sky, etc", etc.
     
     - Any user can define their own color points they want to be tested on.
@@ -66,7 +67,14 @@ https://en.wikipedia.org/wiki/Mach_bands
 
 http://www.webexhibits.org/colorart/index.html
 
+https://en.wikipedia.org/wiki/Perceptual_learning
+
 === Acknowledgments
+
+https://www.jasondavies.com/maps/random-points/
+Jason Davies poisson sampling for unit spheres
+
+http://bl.ocks.org/mbostock/9f37cc207c0cb166921b
 
 http://www.brucelindbloom.com/
 Took his javascript for Lab to RGB calculation

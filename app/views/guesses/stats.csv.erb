@@ -1,0 +1,5 @@
+<%- headers = ['ID', 'Created', 'CIEDifference', 'L-delta'] -%>
+<%= CSV.generate_line headers %>
+<%- Guess.all.order(created_at: :asc).each do |guess| -%>
+<%= CSV.generate_line([guess.id, guess.created_at, guess.delta, Colorable::deltas(guess, guess.spot)[:l]]) -%>
+<%- end -%>

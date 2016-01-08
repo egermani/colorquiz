@@ -1,7 +1,7 @@
 var spots = []
 var texts = []
 var spotCounter = 0;
-raster = new Raster('game-image');
+var raster = new Raster('game-image');
 // var raster = new Raster('game-image');
 
 // Move the raster to the center of the view
@@ -52,6 +52,9 @@ function Spot(spotSize, xCoord, yCoord, marker) {
 
 // For each spot associated with the image, create one, and push it into an array.
 var data = $('#myCanvas').data('spots');
+if (data.length === undefined) {
+    data = [data]
+};
 
 for (i = 0; i <= data.length - 1; i++) {
     spot = data[i];
@@ -107,20 +110,6 @@ function tupleizeRGB(rgbString) {
 function euclidean_distance(firstTuple, secondTuple) {
     sums = Math.pow((firstTuple[0] - secondTuple[0]), 2) + Math.pow((firstTuple[1] - secondTuple[1]), 2) + Math.pow((firstTuple[2] - secondTuple[2]), 2)
     return Math.sqrt(sums)
-};
-
-function hexBind(number) {
-    if (number < 0) {
-        return 0
-    } else if (number > 1) {
-        return 1
-    } else {
-        return number
-    };
-}
-
-function tinyRGB() {
-    return tinycolor.fromRatio({r:hexBind(RGB.R), g:hexBind(RGB.G), b:hexBind(RGB.B)}).toHexString()
 };
 
 $( document ).ready(function () {

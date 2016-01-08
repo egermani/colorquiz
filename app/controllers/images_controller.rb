@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy, :play]
+  load_and_authorize_resource
 
   def index
     @images = Image.all
@@ -26,7 +27,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Spot was successfully created.' }
+        format.html { redirect_to edit_image_path(@image), notice: 'Spot was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new }

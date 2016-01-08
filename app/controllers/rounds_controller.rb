@@ -1,14 +1,17 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :destroy]
+  load_and_authorize_resource
 
   def index
     @rounds = Round.all.sort_by(&:created_at).reverse!
   end
 
   def create
-    p params
     @round = Round.new(round_params)
-
+    if current_user
+      @round.user = User.find(current_user.id)
+      @round.guesses.update_all(guesser_id: current_user.id)
+    end
     respond_to do |format|
       if @round.save
         format.html { redirect_to @round, notice: 'Spot was successfully created.' }
@@ -36,6 +39,10 @@ class RoundsController < ApplicationController
   end
 
   def round_params
-    params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id])
+    parameters = params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id])
+    if current_user
+      parameters["guesses_attributes"].each { |key, value| value.merge!({"guesser_id" => current_user.id})}
+    end
+    return parameters
   end
 end

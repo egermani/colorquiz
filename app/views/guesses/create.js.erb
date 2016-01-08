@@ -1,0 +1,17 @@
+paper.project.remove();
+debugger;
+paper.Project("#myCanvas");
+var raster = new paper.Raster({
+    source: "<%= j(@spot.image.img.url(:full)) %>"
+});
+var $canvas = $(paper.view.element);
+$canvas.parent().attr('style', "width: " + "<%= j(@spot.image.width.to_s)%>");
+paper.view.update(true);
+paper.project.activeLayer.children[0].replaceWith(raster)
+paper.view.update(true);
+$canvas.attr('width', "<%= j(@spot.image.width.to_s)%>");
+$canvas.attr('height', "<%= j(@spot.image.height.to_s)%>");
+paper.view.update(true);
+raster.position = paper.view.center;
+paper.view.update(true);
+// debugger;

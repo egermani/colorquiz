@@ -1,0 +1,18 @@
+<%= content_tag :h1, @quiz.name %>
+<%= content_tag :i, @quiz.description %>
+<% if @quiz.name == "The Values Test" %>
+    <p>This is 150 spots, presented in random order. The goal is to train your reflexes, so don't take more than a second or two to make your decision. You can quit at any point -- any and all data points help at this stage.</p>
+    <%= link_to "Play!", play_quiz_path(@quiz) %>
+<% else %>
+    <p>Here you'll be presented with three sets of numbered spots. Your challenge is to match them as closely as you can. To do so, click on the black square next to the large gray dots beneath the image. This will open a color picker, which you can adjust to your liking.</p>
+
+    <p>(If you're a digital artist and know what Lab color is, you can use those three sliders to make your selection. Just push the radio button for the dot you'd like to modify first. If you have no idea what Lab color is, don't worry about it!)</p>
+
+    <p> One more note: the background of this page is a 50% gray, which you can use for reference.</p>
+
+    <ul>
+        <li><%= link_to "Image A", play_image_path(Image.find(19)) %></li>
+        <li><%= link_to "Image B", play_image_path(Image.find(13)) %></li>
+        <li><%= link_to "Image C", play_image_path(Image.find(20)) %></li>
+    </ul>
+<% end %>

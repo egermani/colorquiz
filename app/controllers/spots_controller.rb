@@ -1,17 +1,20 @@
 class SpotsController < ApplicationController
   before_action :set_spot, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /spots
   # GET /spots.json
   def index
     @spots = Spot.all
+                  .sort_by { |spot| [spot.guesses.count, spot.calculate_par] }
+                  .reverse!
   end
 
   # GET /spots/1
   # GET /spots/1.json
   def show
     respond_to do |format|
-      # format.html { redirect_to @message } # no js fallback
+      format.html { }
       format.js { }
     end
   end

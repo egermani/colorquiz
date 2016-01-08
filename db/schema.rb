@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218061119) do
+ActiveRecord::Schema.define(version: 20160108040047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 20151218061119) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.float    "delta"
+    t.string   "format"
   end
 
   add_index "guesses", ["round_id"], name: "index_guesses_on_round_id", using: :btree
@@ -44,6 +45,24 @@ ActiveRecord::Schema.define(version: 20151218061119) do
   end
 
   add_index "images", ["user_id"], name: "index_images_on_user_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "quiz_id"
+    t.integer  "spot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id", using: :btree
+  add_index "questions", ["spot_id"], name: "index_questions_on_spot_id", using: :btree
+
+  create_table "quizzes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "format"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "rounds", force: :cascade do |t|
     t.integer  "user_id"
@@ -81,11 +100,17 @@ ActiveRecord::Schema.define(version: 20151218061119) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.boolean  "admin"
+    t.integer  "years_active"
+    t.integer  "hours_per_week"
+    t.string   "preferred_medium"
   end
 
   add_foreign_key "guesses", "rounds"
   add_foreign_key "guesses", "spots"
   add_foreign_key "images", "users"
+  add_foreign_key "questions", "quizzes"
+  add_foreign_key "questions", "spots"
   add_foreign_key "rounds", "images"
   add_foreign_key "rounds", "users"
   add_foreign_key "spots", "images"

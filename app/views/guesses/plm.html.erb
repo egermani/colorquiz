@@ -1,0 +1,7 @@
+<h1>Hey buddy!</h1>
+<%= form_tag(generate_palette_path, remote: true) do %>
+    <%= color_field_tag 'actual', "#8F59F6" %>
+    <%= button_tag 'submit' %>
+<% end %> 
+<%= content_tag(:div, "", id: "distractors") %>
+

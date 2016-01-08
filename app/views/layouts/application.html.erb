@@ -6,11 +6,23 @@
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
   <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+    |
+  <%= link_to "Your Stats", stats_path, :class => 'navbar-link'  %>
 <% else %>
   <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
   <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
 <% end %>
-  <title>Colorquiz</title>
+  |
+<%= link_to "Home", root_path, :class => 'navbar-link'  %>
+  |
+<%= link_to "Color Quiz", quiz_path(Quiz.find(5)), :class => 'navbar-link'  %>
+  |
+<%= link_to "Value Quiz", quiz_path(Quiz.find(4)), :class => 'navbar-link'  %>
+
+<% if flash[:alert] %>
+    <div class="notice"><%= flash[:alert] %></div>
+  <% end %>
+  <title>Color Quiz Beta</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>

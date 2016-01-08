@@ -4,4 +4,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :guesses
+  before_save :generate_name
+
+  def generate_name
+    self.name ||= email[0..email.index("@")-1]
+  end
 end

@@ -3,16 +3,14 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Listing Images</h1>
+<p> Click the thumbnail to play the image.</p>
 
 <table>
   <thead>
     <tr>
       <th>Image</th>
-      <th>Difficulty</th>
-      <th>Action1</th>
-      <th>Action2</th>
-      <th>Action3</th>
-      <th colspan="3"></th>
+      <th>Rounds Played</th>
+      <th>Par</th>
     </tr>
   </thead>
 
@@ -23,8 +21,10 @@
         <td><%= image.rounds.count %></td>
         <td><%= image.calculate_par %></td>
         <td><%= link_to 'Show', image %></td>
-        <td><%= link_to 'Edit', edit_image_path(image) %></td>
-        <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.try(:admin?) %>
+          <td><%= link_to 'Edit', edit_image_path(image) %></td>
+          <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

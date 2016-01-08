@@ -7,6 +7,8 @@
     <tr>
       <th>Image</th>
       <th>Color</th>
+      <th># Guesses</th>
+      <th>Avg. L-Delta</th>
       <th>X</th>
       <th>Y</th>
       <th>Radius</th>
@@ -17,14 +19,18 @@
   <tbody>
     <% @spots.each do |spot| %>
       <tr>
-        <td><%= spot.image %></td>
-        <td><%= spot.color %></td>
+        <td><%= image_tag spot.image.img.url(:thumb) %></td>
+        <%= content_tag :td, "", style: "background-color: #{spot.color}" %>
+        <td><%= spot.guesses.count %></td>
+        <td><%= spot.calculate_par %></td>
         <td><%= spot.x %></td>
         <td><%= spot.y %></td>
         <td><%= spot.radius %></td>
         <td><%= link_to 'Show', spot %></td>
-        <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
-        <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user.try(:admin?) %>
+          <td><%= link_to 'Edit', edit_spot_path(spot) %></td>
+          <td><%= link_to 'Destroy', spot, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
