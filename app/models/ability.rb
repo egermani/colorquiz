@@ -10,6 +10,7 @@ class Ability
       else
         can :read, :all
         can :play, :all
+        can :stats, Guess
         can :create, Round
         can :create, Guess
       end

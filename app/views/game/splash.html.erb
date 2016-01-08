@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<div id="container" style="max-width: 960px; margin: 0px auto; position: relative; font-family: Helvetica, sans-serif">
+    <svg width="960" height="960">
+    </svg>
+    <div id="floater" style="width: 400px; position: absolute; left: 50%; top: 50%; text-align: center; margin-left: -200px; margin-top: -120px;"><h1>Color Quiz</h1><p>An app that will (pretty soon) improve artists' color discrimination.</p>
+    <p>But first it needs user testing!</p>
+    <p>If you'd like to access your statistics after playing, first create an account <%= link_to "here", new_user_registration_path %>. Or play as a guest: click the links below to get started.</p>
+    <p><%= link_to "Test Colors", quiz_path(Quiz.last) %> | <%= link_to "Test Values", quiz_path(Quiz.first) %></p>
+    </div>
+</div>
+<script src="//d3js.org/d3.v3.min.js"></script>
+<script>
+
+var π = Math.PI,
+    τ = 2 * π,
+    n = 500;
+
+var width = 960,
+    height = 960,
+    outerRadius = width / 2,
+    innerRadius = outerRadius - 80;
+
+d3.select("svg").append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+  .selectAll("path")
+    .data(d3.range(0, τ, τ / n))
+  .enter().append("path")
+    .attr("d", d3.svg.arc()
+        .outerRadius(outerRadius)
+        .innerRadius(innerRadius)
+        .startAngle(function(d) { return d; })
+        .endAngle(function(d) { return d + τ / n * 1.1; }))
+    .style("fill", function(d) { return d3.hsl(d * 360 / τ, 1, .5); });
+
+d3.select(self.frameElement).style("height", height + "px");
+
+</script>
