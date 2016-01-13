@@ -38,26 +38,13 @@ MVP User stories
 
     - Allow a guest user to create an account and transfer their previously made guesses to it.
 
-    - LAB sliders for color picking instead of just the spectrum picker.
-
-    - User registration, authentication, authorization, and emailing
-
     - Welcome/explanation page/how to play and FAQ. (Courses on this landing.)
 
-    - A new game mode: only guess values.
-
     - Let certain users create their own quizzes. Like designing a golf course -- you put together a set of "holes", and colors to pick on each. The designer then includes some helpful tips in case the guesser misses, like "Reflections are typically 2 steps darker than the sky, etc", etc.
-    
-    - Any user can define their own color points they want to be tested on.
-    
-    - On the guess page, quickly sample a color to work relative to that.
-    
+            
     - Use SRS algorithms to decide which images to show regular users. (Themed challenges are worthwhile, but varied questions makes more sense for daily users).
     
     - Use random sampling to gather guesses across the image. With enough users, this will let us figure out on an almost per-pixel basis which colors are hard to pick. It'd be cool to then visualize with a heatmap the relative difficulties of the color patches, might give some insight into color vision. Do it like a captcha, sprinkle in some random ones along with the pre-programmed.
-    
-    - Different color targets. These circles on a 50% gray are deceptive -- consider the Lake Bled example. The orange there feels incredibly saturated because it's surrounded by pale violets. The player understands the effect they're going for, but makes the decision relative to the 50% gray, which means they overdo it. So if there was a circular ring that could be set to a certain color that would probably help.
-
 
 === Notes
 
