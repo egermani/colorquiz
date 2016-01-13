@@ -5,7 +5,7 @@
     <%= content_tag(:p) do %>
         Your LAB guess: <%= guess.lab[0].round(2) %> / <%= guess.lab[1].round(2) %> / <%= guess.lab[2].round(2) %>
         <br/>
-        Real LAB guess: <%= guess.spot.lab[0].round(2) %> / <%= guess.spot.lab[1].round(2) %> / <%= guess.spot.lab[2].round(2) %>
+        Real LAB value: <%= guess.spot.lab[0].round(2) %> / <%= guess.spot.lab[1].round(2) %> / <%= guess.spot.lab[2].round(2) %>
     <% end %>
     <% deltas = Colorable.deltas(guess, guess.spot) %>
     <b>Lab L delta</b>: <%= deltas[:l] %> | <%= guess.lab[0].round(3) %> / <%= guess.spot.lab[0].round(3) %><br/>

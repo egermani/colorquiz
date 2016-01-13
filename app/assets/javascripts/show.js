@@ -83,12 +83,20 @@ $( document ).ready(function () {
                 deselect();
                 path.selected = true;
                 project.activeLayer.addChild(path);
-                // debugger;
                 var spotId = $("#myCanvas").data('spots')[path.data - 1]["id"];
                 var imageId = $("#myCanvas").data('spots')[path.data - 1]["image_id"];
-                $.get( imageId + "/spots/" + spotId, function( data ) {
+                $.get( imageId + "/spots/" + spotId + ".js", function( data ) {
                   $( "#result" ).html( data );
-                  // alert( data );
+                  $(".compare").each(function ( index ) {
+                      var playerGuess = $(this).attr("value");
+                      var realColor = $(this).attr("data");
+                      $(this).spectrum({
+                          showPalette: true,
+                          palette: [
+                              [playerGuess, realColor]
+                          ]
+                      });
+                  });
                 });
             };
         };
