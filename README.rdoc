@@ -30,7 +30,11 @@ MVP User stories
 
 === Potential/To-Do Features
 
-    - Show the user's name as "You" when reviewing their guesses.
+    - Explain what the scores mean, give them a sense of how other people perform on it.
+
+    - Black/white images in the value quiz
+
+    - Show actual/value in the value quiz
 
     - Allow a guest user to create an account and transfer their previously made guesses to it.
 
