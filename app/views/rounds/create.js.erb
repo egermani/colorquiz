@@ -1,1 +1,11 @@
 $("#roundResults").html("<%= j(render(:partial => 'guess', :collection => @round.guesses)) %>");
+$(".compare").each(function ( index ) {
+    var playerGuess = $(this).attr("value");
+    var realColor = $(this).attr("data");
+    $(this).spectrum({
+        showPalette: true,
+        palette: [
+            [playerGuess, realColor]
+        ]
+    });
+});

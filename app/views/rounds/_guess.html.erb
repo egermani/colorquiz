@@ -17,5 +17,6 @@
     <b>B delta</b>: <%= deltas[:b] %> | <%= guess.rgb.b %> / <%= guess.spot.rgb.b %><br/>
     <b>Hue delta</b>: <%= calculate_hue_delta(guess) %> | <%= guess.hue %> / <%= guess.spot.hue %><br/>
     <%= guess.created_at.localtime.strftime('%m/%d/%y, %I:%M %p') %>
+    <input type="text" class="compare" value=<%= "#{guess.color}"%> data=<%= "#{guess.spot.color}" %> />
 <% end %>
 <hr>
