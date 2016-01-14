@@ -8,9 +8,15 @@ class GuessesController < ApplicationController
 
   def stats
     # Rails.logger.info(request.env)
+    if params[:type] == "value"
+      @guesses = Guess.value.order(created_at: :asc).as_json(:only => [:created_at, :delta], methods: :l_delta)
+      @guesses.each {|node| node["delta"] = node.delete "l_delta"}
+    else
+      @guesses = Guess.color.order(created_at: :asc).as_json(:only => [:created_at, :delta])
+    end
     respond_to do |format|
       format.html {  }
-      format.json { render :json => Guess.all.order(created_at: :asc), :only => [:created_at, :delta] } 
+      format.json { render :json => @guesses  } 
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"guesses.csv\""
         headers['Content-Type'] ||= 'text/csv'

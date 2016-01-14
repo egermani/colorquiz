@@ -43,4 +43,5 @@
 <%= form_for @guess do |f| %>
   <%= f.hidden_field :color %>
   <%= f.hidden_field :spot_id, value: @spot.id %>
+  <%= f.hidden_field :format, value: "value" %>
 <% end %>

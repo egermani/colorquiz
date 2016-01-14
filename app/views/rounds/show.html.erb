@@ -6,3 +6,16 @@
 <%= render partial: "images/canvas", locals: {image: @round.image, spots: @round.image.spots} %>
 
 <%= render partial: "guess", collection: @round.guesses %>
+
+<script>
+    $(".compare").each(function ( index ) {
+        var playerGuess = $(this).attr("value");
+        var realColor = $(this).attr("data");
+        $(this).spectrum({
+            showPalette: true,
+            palette: [
+                [playerGuess, realColor]
+            ]
+        });
+    });
+</script>
