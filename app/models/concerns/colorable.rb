@@ -35,7 +35,7 @@ module Colorable
     c1 = c1.rgb
     c2 = c2.rgb
     deltas = {}
-    deltas[:l] = (c1.to_lab[0] - c2.to_lab[0]).round(3)
+    deltas[:l] = (c1.to_lab[0] - c2.to_lab[0]).round(1)
     deltas[:r] = (c1.r - c2.r).round
     deltas[:g] = (c1.g - c2.g).round
     deltas[:b] = (c1.b - c2.b).round

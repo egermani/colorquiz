@@ -26,6 +26,9 @@
 </style>
 <body>
 <p>This page is in progress.</p>
+<div id="color"></div>
+<p>This chart shows your score on the color game.</p>
+<div id="value"></div>
 <script src="//d3js.org/d3.v3.min.js"></script>
     <script type="text/javascript">
 
@@ -39,12 +42,12 @@
               11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
       
       //Create SVG element
-      var svg = d3.select("body")
+      var svg = d3.select("#color")
             .append("svg")
             .attr("width", w)
             .attr("height", h);
 
-      d3.json("stats.json", function (error, data) {
+      d3.json("stats/color.json", function (error, data) {
           if (error) throw error;
 
           svg.selectAll("rect")
@@ -62,7 +65,32 @@
                 return d.delta * yScale;
              });
       });
-      
-    </script>
-    <p>This chart shows all guesses made -- both color and value, which accounts for the large spikes.</p>
+          
+          //Create SVG element
+          var valuesvg = d3.select("#value")
+                .append("svg")
+                .attr("width", w)
+                .attr("height", h);
+
+          d3.json("stats/value.json", function (error, data) {
+              if (error) throw error;
+
+              valuesvg.selectAll("rect")
+                 .data(data)
+                 .enter()
+                 .append("rect")
+                 .attr("x", function(d, i) {
+                    return i * (w / data.length);
+                 })
+                 .attr("y", function(d) {
+                    return h - (d.delta * yScale);
+                 })
+                 .attr("width", w / data.length - barPadding)
+                 .attr("height", function(d) {
+                    return d.delta * yScale;
+                 });
+          });
+          
+        </script>
+    <p>This chart shows your scores on the value game. (Scores are given as absolute values, so if you were 20 under or 20 above in your guess, you will see 20 either way).</p>
 </body>
