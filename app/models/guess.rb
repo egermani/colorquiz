@@ -11,4 +11,8 @@ class Guess < ActiveRecord::Base
   def score
     self.delta ||= Colorable::delta(self, spot)
   end
+
+  def l_delta
+    (Colorable::deltas(self, spot)[:l]).abs
+  end
 end
