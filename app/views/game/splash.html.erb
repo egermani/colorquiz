@@ -5,8 +5,7 @@
     </svg>
     <div id="floater" style="width: 400px; position: absolute; left: 50%; top: 50%; text-align: center; margin-left: -200px; margin-top: -120px;"><h1>Color Quiz</h1><p>An app that will (pretty soon) improve artists' color discrimination.</p>
     <p>But first it needs user testing!</p>
-    <p>If you'd like to access your statistics after playing, first create an account <%= link_to "here", new_user_registration_path %>. Or play as a guest: click the links below to get started.</p>
-    <p><%= link_to "Test Colors", quiz_path(Quiz.last) %> | <%= link_to "Test Values", quiz_path(Quiz.first) %></p>
+    <p><%= link_to "Take the quiz", quiz_path(Quiz.last) %></p>
     </div>
 </div>
 <script src="//d3js.org/d3.v3.min.js"></script>
