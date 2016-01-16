@@ -1,6 +1,7 @@
 class RoundsController < ApplicationController
   before_action :set_round, only: [:show, :destroy]
   load_and_authorize_resource
+  skip_before_filter :verify_authenticity_token, :only => [:create] 
 
   def index
     @rounds = Round.all.sort_by(&:created_at).reverse!
@@ -8,10 +9,8 @@ class RoundsController < ApplicationController
 
   def create
     @round = Round.new(round_params)
-    if current_user
-      @round.user = User.find(current_user.id)
-      @round.guesses.update_all(guesser_id: current_user.id)
-    end
+    @round.user = User.find(current_or_guest_user.id)
+    @round.guesses.update_all(guesser_id: current_or_guest_user.id)
     respond_to do |format|
       if @round.save
         format.html { redirect_to @round, notice: 'Spot was successfully created.' }
@@ -40,8 +39,9 @@ class RoundsController < ApplicationController
 
   def round_params
     parameters = params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id, :format])
-    if current_user
-      parameters["guesses_attributes"].each { |key, value| value.merge!({"guesser_id" => current_user.id})}
+    if current_or_guest_user
+      p current_or_guest_user
+      parameters["guesses_attributes"].each { |key, value| value.merge!({"guesser_id" => current_or_guest_user.id})}
     end
     return parameters
   end

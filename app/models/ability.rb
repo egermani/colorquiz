@@ -8,9 +8,9 @@ class Ability
       if user.admin?
         can :manage, :all
       else
+        can :stats, Guess
         can :read, :all
         can :play, :all
-        can :stats, Guess
         can :create, Round
         can :create, Guess
       end
