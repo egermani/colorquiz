@@ -26,71 +26,131 @@
 </style>
 <body>
 <p>This page is in progress.</p>
-<div id="color"></div>
-<p>This chart shows your score on the color game.</p>
-<div id="value"></div>
+<svg id="color"></svg>
+<p>This chart shows your score on the color game. Delta scores < 2.3 are considered below the threshold of the Just Noticeable Difference (JND)</p>
+<svg id="value"></svg>
 <script src="//d3js.org/d3.v3.min.js"></script>
-    <script type="text/javascript">
+<script type="text/javascript">
 
-      //Width and height
-      var w = 960;
-      var h = 500;
-      var barPadding = 0;
-      var yScale = 10;
-      
-      var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-              11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
-      
-      //Create SVG element
-      var svg = d3.select("#color")
-            .append("svg")
-            .attr("width", w)
-            .attr("height", h);
+var margin = {top: 20, right: 20, bottom: 40, left: 40},
+    width = 950 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
 
-      d3.json("stats/color.json", function (error, data) {
-          if (error) throw error;
+var parseDate = d3.time.format.iso.parse;
 
-          svg.selectAll("rect")
-             .data(data)
-             .enter()
-             .append("rect")
-             .attr("x", function(d, i) {
-                return i * (w / data.length);
-             })
-             .attr("y", function(d) {
-                return h - (d.delta * yScale);
-             })
-             .attr("width", w / data.length - barPadding)
-             .attr("height", function(d) {
-                return d.delta * yScale;
-             });
-      });
-          
-          //Create SVG element
-          var valuesvg = d3.select("#value")
-                .append("svg")
-                .attr("width", w)
-                .attr("height", h);
+var x = d3.scale.ordinal().rangeBands([0, width]);
+var y = d3.scale.linear()
+    .range([height, 0]);
 
-          d3.json("stats/value.json", function (error, data) {
-              if (error) throw error;
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    .ticks(10);
 
-              valuesvg.selectAll("rect")
-                 .data(data)
-                 .enter()
-                 .append("rect")
-                 .attr("x", function(d, i) {
-                    return i * (w / data.length);
-                 })
-                 .attr("y", function(d) {
-                    return h - (d.delta * yScale);
-                 })
-                 .attr("width", w / data.length - barPadding)
-                 .attr("height", function(d) {
-                    return d.delta * yScale;
-                 });
-          });
-          
-        </script>
-    <p>This chart shows your scores on the value game. (Scores are given as absolute values, so if you were 20 under or 20 above in your guess, you will see 20 either way).</p>
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .ticks(10);
+
+//Create SVG element
+var svg = d3.select("#color")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json("stats/color.json", function (error, data) {
+    if (error) throw error;
+
+    // data.forEach(function(d) {
+    //     d.created_at = parseDate(d.created_at);
+    //     d.delta = +d.delta;
+    // });
+
+    x.domain(data.map(function(d) { return d.created_at; }));
+    y.domain([0, d3.max(data, function(d) { return d.delta; })]);
+
+    // xAxis = xAxis.tickValues(x.domain().filter(function(d, i) { return !(i % 7); }))
+    
+    // svg.append("g")
+    //     .attr("class", "x axis")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(xAxis)
+    //   .selectAll("text")
+    //     .style("text-anchor", "end")
+    //     .attr("dx", "-.8em")
+    //     .attr("dy", "-.55em")
+    //     .attr("transform", "rotate(-90)" );
+
+    svg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Delta");
+
+    svg.selectAll("rect")
+       .data(data)
+      .enter().append("rect")
+       .attr("x", function(d) { return x(d.created_at); })
+       .attr("width", x.rangeBand())
+       .attr("y", function(d) { return y(d.delta); })
+       .attr("height", function(d) { return height - y(d.delta); });
+});
+
+//Create SVG element
+var newsvg = d3.select("#value")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.json("stats/value.json", function (error, data) {
+    if (error) throw error;
+
+    // data.forEach(function(d) {
+    //     d.created_at = parseDate(d.created_at);
+    //     d.delta = +d.delta;
+    // });
+
+    x.domain(data.map(function(d) { return d.created_at; }));
+    y.domain([0, d3.max(data, function(d) { return d.delta; })]);
+
+    // xAxis = xAxis.tickValues(x.domain().filter(function(d, i) { return !(i % 7); }))
+    
+    // svg.append("g")
+    //     .attr("class", "x axis")
+    //     .attr("transform", "translate(0," + height + ")")
+    //     .call(xAxis)
+    //   .selectAll("text")
+    //     .style("text-anchor", "end")
+    //     .attr("dx", "-.8em")
+    //     .attr("dy", "-.55em")
+    //     .attr("transform", "rotate(-90)" );
+
+    newsvg.append("g")
+          .attr("class", "y axis")
+          .call(yAxis)
+        .append("text")
+          .attr("transform", "rotate(-90)")
+          .attr("y", 6)
+          .attr("dy", ".71em")
+          .style("text-anchor", "end")
+          .text("Delta");
+
+    newsvg.selectAll("rect")
+       .data(data)
+      .enter().append("rect")
+       .attr("x", function(d) { return x(d.created_at); })
+       .attr("width", x.rangeBand())
+       .attr("y", function(d) { return y(d.delta); })
+       .attr("height", function(d) { return height - y(d.delta); });
+});
+</script>
+
+<p>This chart shows your scores on the value game. (Scores are given as absolute values, so if you were 20 under or 20 above in your guess, you will see 20 either way).</p>
+
 </body>
