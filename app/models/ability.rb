@@ -7,10 +7,15 @@ class Ability
       user ||= User.new # guest user (not logged in)
       if user.admin?
         can :manage, :all
+      elsif user.encrypted_password?
+        can :stats, Guess
+        can :read, :all
+        can :play, :all
+        can :create, Round
+        can :create, Guess
       else
         can :read, :all
         can :play, :all
-        can :stats, Guess
         can :create, Round
         can :create, Guess
       end
