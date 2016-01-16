@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   resources :rounds
   resources :guesses
   resources :users, :only => :show
-  resources :quizzes, :only => [:show, :index]
+  resources :quizzes, :only => [:show, :index] do
+    resources :questions
+  end
   
   # Example resource route with options:
   #   resources :products do
