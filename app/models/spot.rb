@@ -3,7 +3,7 @@ class Spot < ActiveRecord::Base
   
   belongs_to :image
   has_many :guesses
-  has_and_belongs_to_many :quizzes, :through => :questions
+  has_many :questions, as: :questionable
 
   def calculate_par
     if guesses.count > 0

@@ -5,6 +5,7 @@ class Image < ActiveRecord::Base
 
   has_many :rounds
   has_many :spots
+  has_many :questions, as: :questionable
 
   def calculate_par
     if rounds.count > 0
