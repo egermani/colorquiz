@@ -9,10 +9,10 @@ class GuessesController < ApplicationController
   def stats
     # Rails.logger.info(request.env)
     if params[:type] == "value"
-      @guesses = Guess.value.order(created_at: :asc).as_json(:only => [:created_at, :delta], methods: :l_delta)
+      @guesses = current_user.guesses.value.order(created_at: :asc).as_json(:only => [:created_at, :delta], methods: :l_delta)
       @guesses.each {|node| node["delta"] = node.delete "l_delta"}
     else
-      @guesses = Guess.color.order(created_at: :asc).as_json(:only => [:created_at, :delta])
+      @guesses = current_user.guesses.color.order(created_at: :asc).as_json(:only => [:created_at, :delta])
     end
     respond_to do |format|
       format.html {  }
@@ -56,6 +56,6 @@ class GuessesController < ApplicationController
   private
 
     def guess_params
-      params.require(:guess).permit(:color, :spot_id)
+      params.require(:guess).permit(:color, :spot_id, :format)
     end
 end
