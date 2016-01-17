@@ -6,7 +6,7 @@ class SpotsController < ApplicationController
   # GET /spots.json
   def index
     @spots = Spot.all
-                  .sort_by { |spot| [spot.guesses.count, spot.calculate_par] }
+                  .sort_by { |spot| [spot.guesses.color.count, spot.calculate_par] }
                   .reverse!
   end
 

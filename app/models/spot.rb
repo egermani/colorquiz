@@ -3,11 +3,19 @@ class Spot < ActiveRecord::Base
   
   belongs_to :image
   has_many :guesses
-  has_and_belongs_to_many :quizzes, :through => :questions
+  has_many :questions, as: :questionable
 
-  def calculate_par
+  def calculate_l_par
     if guesses.count > 0
       (guesses.map {|guess| Colorable::deltas(guess, self)[:l].abs}.sum / guesses.count).round(2) 
+    else
+      "n/a"
+    end
+  end
+
+  def calculate_par
+    if guesses.color.count > 0
+      (guesses.color.map {|guess| guess.score}.sum / guesses.color.count).round(2) 
     else
       "n/a"
     end

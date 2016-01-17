@@ -1,3 +1,7 @@
 <%= render :partial => "images/canvas", locals: {image: @spot.image, spots: @spot} %>
 
-<%= render partial: "rounds/guess", collection: @spot.guesses.order(:created_at => :desc) %>
+<%= render partial: "rounds/guess", collection: @spot.guesses.color.order(:created_at => :desc) %>
+
+<hr>
+
+<%= render partial: "rounds/guess", collection: @spot.guesses.value.order(:created_at => :desc) %>

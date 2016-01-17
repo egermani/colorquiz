@@ -21,7 +21,8 @@
       <tr>
         <td><%= image_tag spot.image.img.url(:thumb) %></td>
         <%= content_tag :td, "", style: "background-color: #{spot.color}" %>
-        <td><%= spot.guesses.count %></td>
+        <td><%= spot.guesses.color.count %></td>
+        <td><%= spot.calculate_l_par %></td>
         <td><%= spot.calculate_par %></td>
         <td><%= spot.x %></td>
         <td><%= spot.y %></td>
