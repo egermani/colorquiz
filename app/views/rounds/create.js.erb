@@ -1,4 +1,4 @@
-$("#roundResults").html("<%= j(render(:partial => 'guess', :collection => @round.guesses)) %>");
+$("#roundResults").html("<%= j(render(:partial => 'guess', :collection => @round.guesses.order(:created_at => :asc))) %>");
 $(".compare").each(function ( index ) {
     var playerGuess = $(this).attr("value");
     var realColor = $(this).attr("data");

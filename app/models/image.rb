@@ -4,7 +4,7 @@ class Image < ActiveRecord::Base
   after_save :extract_dimensions
 
   has_many :rounds
-  has_many :spots
+  has_many :spots, :dependent => :destroy
   has_many :questions, as: :questionable
 
   def calculate_par
