@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160116072029) do
+ActiveRecord::Schema.define(version: 20160120193112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,16 @@ ActiveRecord::Schema.define(version: 20160116072029) do
   add_index "questions", ["questionable_type", "questionable_id"], name: "index_questions_on_questionable_type_and_questionable_id", using: :btree
   add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id", using: :btree
   add_index "questions", ["spot_id"], name: "index_questions_on_spot_id", using: :btree
+
+  create_table "quiz_rounds", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "quiz_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "quiz_rounds", ["quiz_id"], name: "index_quiz_rounds_on_quiz_id", using: :btree
+  add_index "quiz_rounds", ["user_id"], name: "index_quiz_rounds_on_user_id", using: :btree
 
   create_table "quizzes", force: :cascade do |t|
     t.string   "name"
@@ -115,6 +125,8 @@ ActiveRecord::Schema.define(version: 20160116072029) do
   add_foreign_key "images", "users"
   add_foreign_key "questions", "quizzes"
   add_foreign_key "questions", "spots"
+  add_foreign_key "quiz_rounds", "quizzes"
+  add_foreign_key "quiz_rounds", "users"
   add_foreign_key "rounds", "images"
   add_foreign_key "rounds", "users"
   add_foreign_key "spots", "images"

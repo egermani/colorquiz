@@ -1,0 +1,23 @@
+<%= form_for(current_or_guest_user) do |f| %>
+  <div class="field">
+    <%= f.label :years_active, "How many years have you been seriously practicing art?" %><br />
+    <%= f.number_field :years_active, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :hours_per_week, "How many hours a week have you spent on art in the past year, on average?" %><br />
+    <%= f.number_field :hours_per_week, min: 0 %>
+  </div>
+
+  <div class="field">
+    <%= f.label :preferred_medium, "Preferred medium?" %>
+  Digital
+  <%= f.radio_button :preferred_medium, "Digital" %>
+  Traditional
+    <%= f.radio_button :preferred_medium, "Traditional" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Start!"%>
+  </div>
+<% end %>
