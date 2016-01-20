@@ -1,6 +1,7 @@
 <header>
   <%= javascript_include_tag "show", type: "text/paperscript", canvas: "myCanvas" %>
     <h1>Color Quiz</h1>
+    <p>Click on a spot to see the guesses you've made on it over time.</p>
 </header>
 <main>
     <%= render partial: "images/canvas", locals: {image: @image, spots: @image.spots} %>
