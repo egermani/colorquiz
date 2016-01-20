@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   resources :rounds
   resources :guesses
   resources :users, :only => :show
+  patch 'users/:id' => 'users#update'
   resources :quizzes, :only => [:show, :index] do
     resources :questions
   end
