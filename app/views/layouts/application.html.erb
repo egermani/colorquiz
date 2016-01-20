@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <p class="navbar-text pull-right">
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
@@ -15,10 +18,6 @@
   |
   <%= link_to "Your Stats", stats_path, :class => 'navbar-link'  %>
   |
-<%= link_to "Color Quiz", quiz_path(Quiz.find(5)), :class => 'navbar-link'  %>
-  |
-<%= link_to "Value Quiz", quiz_path(Quiz.find(4)), :class => 'navbar-link'  %>
-  |
 <%= link_to "Beta Quiz", quiz_path(Quiz.find(6)), :class => 'navbar-link'  %>
 
 <% if flash[:alert] %>
@@ -30,8 +29,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
 <%= yield %>
-
+</div>
 </body>
 </html>

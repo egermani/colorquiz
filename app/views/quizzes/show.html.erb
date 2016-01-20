@@ -1,21 +1,35 @@
-<%= content_tag :h1, @quiz.name %>
+<style>
+    body {
+        background: #FFF;
+    }
+</style>
+<%= content_tag :h1, @quiz.name, class: "text-center", style: "margin-top: 85px" %>
 <%= content_tag :i, @quiz.description %>
 <% if @quiz.name == "The Values Test" %>
     <p>This is 150 spots, presented in random order. The goal is to train your reflexes, so don't take more than a second or two to make your decision. You can quit at any point -- any and all data points help at this stage.</p>
     <%= link_to "Play!", play_quiz_path(@quiz) %>
 <% else %>
-    <p>Hello, and thanks for helping me out with development of Color Quiz.</p>
+    <div style="margin: 0 20%">
+    <p class="lead">Thanks for helping me out with the development of Color Quiz.</p>
 
-    <p>This quiz is 30 questions long and could take three to ten minutes, depending how deliberate you are. Half the questions will test your ability to judge color, and the other half will test your ability to judge value (lightness). If you're wondering what a good score looks like, I can tell you that anything below a 2.3 on the color questions is below the JND (just noticeable difference, in the jargon), and should therefore be considered a bullseye. For the value questions, if you're within five points either way, you're in good shape.</p>
+    <p>This quiz is 30 questions long and should take five to ten minutes, depending on how deliberate you are. Half the questions test your ability to judge color, and the other half test your ability to judge value (the painter's term for lightness).</p>
 
-    <p>The interface should be intuitive. You click on the To do so, click on the black square next to the large gray dots beneath the image. This will open a color picker, which you can adjust to your liking.</p>
+    <p>If you're wondering what a good score looks like, anything below a 2.3 on the color questions is below the JND (just noticeable difference, in color scientist jargon), and should therefore be considered a bullseye. For the value questions, if you're within five points either way, you're in good shape.</p>
+
+    <p>To make your guesses, click on the black square next to the large gray dots beneath the image. This will open a color picker, which you can adjust to your liking.</p>
 
     <p>A few tips:</p>
 
     <ul>
-        <li>The sliders at the bottom of some questions show you the Lab color values. If you're a digital artist and know what Lab color is, you can use those three sliders to make your selection. Just push the radio button for the dot you'd like to modify first. If you have no idea what Lab color is, don't worry about it! Lab is a color system, like RGB, only it tries to account for human perception of color in a way that RGB does not. The top slider, *L*, measures lightness. *a* and *b* control opponent color responses. *a* maps to the green/magenta opponents, and *b* to the yellow/blue. (A color cannot be both yellowish and blue at the same time, which is why we call them opponents.)</li>
+        <li>The sliders at the bottom of some questions show you the Lab color values. If you're a digital artist and know what Lab color is, you can use those three sliders to make your selection. Just push the radio button for the dot you'd like to modify first. If you have no idea what Lab color is and don't care, don't worry about it! If you're curious: Lab is a color system, like RGB, only it tries to account for human perception of color in a way that RGB does not. The top slider controls lightness, the middle slider controls the level of green/magenta, and the bottom controls blue/yellow.</li>
 
-        <li>The images will all be set on to pof a 50% gray background, which might be helpful as a reference point.</li>
+        <li>The images will all be set on top of a 50% gray background, which might be a helpful reference point.</li>
     </ul>
-    <%= link_to "Play!", play_quiz_path(@quiz) %>
+
+    <p class="lead">Questions before you start</p>
+
+    <p>(If you're not an artist, you can just click the "Start!" button, leaving these blank.)</p>
+
+    <%= render 'users/survey' %>
+    </div>
 <% end %>

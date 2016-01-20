@@ -19,6 +19,16 @@
     font-family: "Helvetica";
  }
 
+ body {
+    color: #000;
+    font-size: 16px;
+    line-height: 1.62;
+}
+
  .field {
     margin-top: 15px;
+ }
+
+ .navbar-link {
+    color: #394272;
  }
