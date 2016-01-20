@@ -11,6 +11,7 @@ class RoundsController < ApplicationController
     @round = Round.new(round_params)
     @round.user = User.find(current_or_guest_user.id)
     @round.guesses.update_all(guesser_id: current_or_guest_user.id)
+    # IF there's a currently active userquiz, create rows in that join table containing these guesses
     respond_to do |format|
       if @round.save
         format.html { redirect_to @round, notice: 'Spot was successfully created.' }

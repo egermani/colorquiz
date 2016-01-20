@@ -18,6 +18,8 @@
 <%= link_to "Color Quiz", quiz_path(Quiz.find(5)), :class => 'navbar-link'  %>
   |
 <%= link_to "Value Quiz", quiz_path(Quiz.find(4)), :class => 'navbar-link'  %>
+  |
+<%= link_to "Beta Quiz", quiz_path(Quiz.find(6)), :class => 'navbar-link'  %>
 
 <% if flash[:alert] %>
     <div class="notice"><%= flash[:alert] %></div>

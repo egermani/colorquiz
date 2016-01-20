@@ -19,11 +19,6 @@ class QuizzesController < ApplicationController
     end
   end
 
-  def debug
-    session[:last_q] = Quiz.find(params[:id]).questions.pluck(:id).max - 1
-    redirect_to play_quiz_path(params[:id])
-  end
-
   private
     def set_quiz
       @quiz = Quiz.find(params[:id])

@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  has_many :guesses, foreign_key: "guesser_id"
-  has_many :rounds
+  has_many :guesses, foreign_key: "guesser_id", :dependent => :destroy
+  has_many :rounds, :dependent => :destroy
   before_save :generate_name
 
   def generate_name

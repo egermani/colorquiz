@@ -4,15 +4,18 @@
     <p>This is 150 spots, presented in random order. The goal is to train your reflexes, so don't take more than a second or two to make your decision. You can quit at any point -- any and all data points help at this stage.</p>
     <%= link_to "Play!", play_quiz_path(@quiz) %>
 <% else %>
-    <p>Here you'll be presented with three sets of numbered spots. Your challenge is to match them as closely as you can. To do so, click on the black square next to the large gray dots beneath the image. This will open a color picker, which you can adjust to your liking.</p>
+    <p>Hello, and thanks for helping me out with development of Color Quiz.</p>
 
-    <p>(If you're a digital artist and know what Lab color is, you can use those three sliders to make your selection. Just push the radio button for the dot you'd like to modify first. If you have no idea what Lab color is, don't worry about it!)</p>
+    <p>This quiz is 30 questions long and could take three to ten minutes, depending how deliberate you are. Half the questions will test your ability to judge color, and the other half will test your ability to judge value (lightness). If you're wondering what a good score looks like, I can tell you that anything below a 2.3 on the color questions is below the JND (just noticeable difference, in the jargon), and should therefore be considered a bullseye. For the value questions, if you're within five points either way, you're in good shape.</p>
 
-    <p> One more note: the background of this page is a 50% gray, which you can use for reference.</p>
+    <p>The interface should be intuitive. You click on the To do so, click on the black square next to the large gray dots beneath the image. This will open a color picker, which you can adjust to your liking.</p>
+
+    <p>A few tips:</p>
 
     <ul>
-        <li><%= link_to "Image A", play_image_path(Image.find(19)) %></li>
-        <li><%= link_to "Image B", play_image_path(Image.find(13)) %></li>
-        <li><%= link_to "Image C", play_image_path(Image.find(20)) %></li>
+        <li>The sliders at the bottom of some questions show you the Lab color values. If you're a digital artist and know what Lab color is, you can use those three sliders to make your selection. Just push the radio button for the dot you'd like to modify first. If you have no idea what Lab color is, don't worry about it! Lab is a color system, like RGB, only it tries to account for human perception of color in a way that RGB does not. The top slider, *L*, measures lightness. *a* and *b* control opponent color responses. *a* maps to the green/magenta opponents, and *b* to the yellow/blue. (A color cannot be both yellowish and blue at the same time, which is why we call them opponents.)</li>
+
+        <li>The images will all be set on to pof a 50% gray background, which might be helpful as a reference point.</li>
     </ul>
+    <%= link_to "Play!", play_quiz_path(@quiz) %>
 <% end %>
