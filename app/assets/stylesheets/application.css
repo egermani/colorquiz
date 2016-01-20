@@ -21,10 +21,14 @@
 
  body {
     color: #000;
+    font-size: 16px;
+    line-height: 1.62;
 }
 
  .field {
     margin-top: 15px;
  }
 
- @media (min-width: 768px) { .container { max-width: 750px; } }
+ .navbar-link {
+    color: #394272;
+ }

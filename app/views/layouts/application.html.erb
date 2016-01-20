@@ -18,10 +18,6 @@
   |
   <%= link_to "Your Stats", stats_path, :class => 'navbar-link'  %>
   |
-<%= link_to "Color Quiz", quiz_path(Quiz.find(5)), :class => 'navbar-link'  %>
-  |
-<%= link_to "Value Quiz", quiz_path(Quiz.find(4)), :class => 'navbar-link'  %>
-  |
 <%= link_to "Beta Quiz", quiz_path(Quiz.find(6)), :class => 'navbar-link'  %>
 
 <% if flash[:alert] %>
@@ -33,8 +29,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div class="container">
 <%= yield %>
-
+</div>
 </body>
 </html>
