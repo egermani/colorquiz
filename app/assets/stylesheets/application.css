@@ -19,6 +19,12 @@
     font-family: "Helvetica";
  }
 
+ body {
+    color: #000;
+}
+
  .field {
     margin-top: 15px;
  }
+
+ @media (min-width: 768px) { .container { max-width: 750px; } }
