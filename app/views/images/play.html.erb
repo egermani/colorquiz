@@ -17,5 +17,8 @@
     <input id="LSlider" type="range" min="0" max="100" step=".01"/><span>50</span><br>
     <input id="aSlider" type="range" min="-100" max="100" step=".01"/><span>0</span><br>
     <input id="bSlider" type="range" min="-100" max="100" step=".01"/><span>0</span><br>
+    <% if @next_link %>
+        <h3><%= link_to "Next question", play_quiz_path(current_quiz) %></h3>
+    <% end %>
 </main>
 
