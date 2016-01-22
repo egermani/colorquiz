@@ -22,6 +22,9 @@ class ImagesController < ApplicationController
     @image = Image.new
   end
 
+  def edit
+  end
+
   def create
     @image = Image.new(image_params)
 
@@ -37,21 +40,14 @@ class ImagesController < ApplicationController
   end
 
   def update
-    if request.xhr?
-      incumbent_spots = Spot.where(image_id: params[:id])
-      form_spots = params[:spot].each do |spot|
-        spot["image_id"] = params[:id].to_i
-        spot["radius"] = spot["radius"].to_i
-        spot["x"] = spot["x"].to_i
-        spot["y"] = spot["y"].to_i
-        unless incumbent_spots.map {|spot| spot.as_json(:except => [:id, :created_at, :updated_at])}
-                              .include?(spot)
-          strong_params = ActionController::Parameters.new(spot).permit(:image_id, :radius, :color, :x, :y)
-          new_spot = Spot.new(strong_params)
-          new_spot.save
-        end
+    respond_to do |format|
+      if @image.update(image_params)
+        format.html { redirect_to @image, notice: 'Spot was successfully updated.' }
+        format.json { render :show, status: :ok, location: @image }
+      else
+        format.html { render :edit }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
       end
-      redirect_to image_path(params["image_id"])
     end
   end
 
@@ -70,7 +66,7 @@ class ImagesController < ApplicationController
   end
 
   def image_params
-    params.require(:image).permit(:img, :user_id, :name)
+    params.require(:image).permit(:img, :user_id, :name, :spots_attributes => [:id, :color, :x, :y, :radius])
   end
 
   def spot_params
