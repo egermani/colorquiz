@@ -17,6 +17,18 @@ class QuizzesController < ApplicationController
       session[:last_q] = -1
       render :thanks
     end
+<<<<<<< Updated upstream
+=======
+
+    if @question.questionable_type == "Image"
+      @image = @question.questionable
+      @round = Round.new()
+      @image.spots.count.times { @round.guesses.build }
+      @guesses = @round.guesses
+      @next_link = true
+      render 'images/play', layout: true
+    end
+>>>>>>> Stashed changes
   end
 
   private
