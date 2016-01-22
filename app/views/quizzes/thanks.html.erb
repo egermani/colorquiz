@@ -1,5 +1,9 @@
-<p>That's all for now... thanks for participating!</p>
+<p>Thanks for participating!</p>
 
-<p>If you'd like to keep practicing, <%= link_to "create an account.", new_user_registration_path %></p>
+<p>Your score: <b><%= current_quiz_round %></b>
+
+<p>Average score: <b>AVERAGE SCORE</b></p>
+
+<p>If you'd like to keep practicing, <%= link_to "create an account.", new_user_registration_path %></p> If you want to play some more images, <%= "go here", images_path %>. Then you can check out your stats <%= "here.", stats_path %></p>
 
 <p><%= link_to "Return to home", root_path %></p>

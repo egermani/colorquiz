@@ -15,11 +15,11 @@ class QuizzesController < ApplicationController
       session[:quiz_id] = @quiz.id
       session[:current_question] = -1
       @question = Quiz.find(current_quiz).next_question(current_question)
+      session[:current_question] = @question.id
       @quiz_round = QuizRound.create(user: current_or_guest_user, quiz: @quiz)
       session[:quiz_round_id] = @quiz_round.id
     end
 
-    # session[:current_question] = @question.id
     @question = Question.find(current_question)
     @quiz_round = QuizRound.find(current_quiz_round)
 
