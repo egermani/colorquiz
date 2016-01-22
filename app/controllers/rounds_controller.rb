@@ -10,10 +10,7 @@ class RoundsController < ApplicationController
   def create
     @round = Round.new(round_params)
     @round.user = User.find(current_or_guest_user.id)
-    @round.guesses.update_all(guesser_id: current_or_guest_user.id)
-    if request.referrer.match(/quizzes\/\d+\/play/)
-      @next_link = ""
-    end
+    set_next_question if @round.guesses.first.quiz_round_id
     respond_to do |format|
       if @round.save
         format.html { redirect_to @round, notice: 'Spot was successfully created.' }
@@ -41,9 +38,8 @@ class RoundsController < ApplicationController
   end
 
   def round_params
-    parameters = params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id, :format])
+    parameters = params.require(:round).permit(:image_id, :guesses_attributes => [:color, :spot_id, :format, :quiz_round_id])
     if current_or_guest_user
-      p current_or_guest_user
       parameters["guesses_attributes"].each { |key, value| value.merge!({"guesser_id" => current_or_guest_user.id})}
     end
     return parameters

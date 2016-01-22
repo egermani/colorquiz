@@ -13,6 +13,9 @@
                     <%= round_fields.hidden_field :color %>
                     <%= round_fields.hidden_field :format, value: "color" %>
                     <%= round_fields.hidden_field :spot_id, value: image.spots[round_fields.index][:id] %>
+                    <% if defined? @quiz_round %>
+                      <%= round_fields.hidden_field :quiz_round_id, value: @quiz_round.id %>
+                    <% end %>
                     <%= radio_button_tag(:active, round_fields.index) %>
                 </td>
             <% end %>

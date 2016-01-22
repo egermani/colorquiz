@@ -1,5 +1,5 @@
 <%= content_tag :div, id: "canvas" do %>
-  <%= render :partial => "images/canvas", locals: {image: @question.questionable, spots: @question.questionable.spots} %>
+  <%= render :partial => "images/canvas", locals: {image: @question.questionable.image, spots: @question.questionable} %>
 <% end %>
 <% if @quiz.format == "value" %>
   <%= render :partial => "grayramp" %>

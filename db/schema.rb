@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120193112) do
+ActiveRecord::Schema.define(version: 20160122020703) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,12 +21,14 @@ ActiveRecord::Schema.define(version: 20160120193112) do
     t.string   "color"
     t.integer  "round_id"
     t.integer  "guesser_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.float    "delta"
     t.string   "format"
+    t.integer  "quiz_round_id"
   end
 
+  add_index "guesses", ["quiz_round_id"], name: "index_guesses_on_quiz_round_id", using: :btree
   add_index "guesses", ["round_id"], name: "index_guesses_on_round_id", using: :btree
   add_index "guesses", ["spot_id"], name: "index_guesses_on_spot_id", using: :btree
 
@@ -120,6 +122,7 @@ ActiveRecord::Schema.define(version: 20160120193112) do
     t.string   "preferred_medium"
   end
 
+  add_foreign_key "guesses", "quiz_rounds"
   add_foreign_key "guesses", "rounds"
   add_foreign_key "guesses", "spots"
   add_foreign_key "images", "users"
