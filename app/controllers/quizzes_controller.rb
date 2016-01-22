@@ -10,12 +10,30 @@ class QuizzesController < ApplicationController
   end
 
   def play
-    @guess = Guess.new
-    last_q = session.fetch(:last_q) { |id| session[:last_q] = Quiz.find(params[:id]).questions.pluck(:id).min - 1 }
-    @spot = Question.next(last_q).first.try(:spot)
-    unless @spot
-      session[:last_q] = -1
+    # No currently active quizround OR doesn't match quiz_id
+    unless session[:quiz_id] == @quiz.id && session[:quiz_round_id]
+      session[:quiz_id] = @quiz.id
+      session[:current_question] = -1
+      @quiz_round = QuizRound.create(user: current_or_guest_user, quiz: @quiz)
+      session[:quiz_round_id] = @quiz_round.id
+    end
+
+    @question = Quiz.find(current_quiz).next_question(session[:current_question])
+    session[:current_question] = @question.id
+
+    unless @question
+      session[:quiz_id] = nil
+      session[:current_question] = nil
+      session[:quiz_round_id] = nil
       render :thanks
+    end
+
+    if @question.questionable_type == "Image"
+      @image = @question.questionable
+      @round = Round.new()
+      @image.spots.count.times { @round.guesses.build }
+      @guesses = @round.guesses
+      render 'images/play', locals: {next_link: true}
     end
   end
 

@@ -34,14 +34,10 @@ class GuessesController < ApplicationController
   end
 
   def create
-    # # Perceptual learning module
-    # @actual = params[:actual]
-    # respond_to do |format|
-    #   format.js { } 
-    # end
     @guess = Guess.new(guess_params)
     # @guess.guesser = User.find(current_user.id) if current_user
     @guess.guesser = current_or_guest_user
+    @guess.quiz_round = QuizRound.find(session[:quiz_round_id]) if session[:quiz_round_id]
     respond_to do |format|
       if @guess.save
         session[:last_q] = session[:last_q].to_i + 1
