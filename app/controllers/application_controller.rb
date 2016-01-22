@@ -17,6 +17,9 @@ class ApplicationController < ActionController::Base
         # reload guest_user to prevent caching problems before destruction
         guest_user(with_retry = false).reload.try(:destroy)
         session[:guest_user_id] = nil
+        session[:quiz_id] = nil
+        session[:current_question] = nil
+        session[:quiz_round_id] = nil
       end
       current_user
     else
@@ -73,7 +76,8 @@ class ApplicationController < ActionController::Base
   end
 
   def set_next_question
-    session[:current_question] = Quiz.find(current_quiz).next_question(current_question).id
+    next_question = Quiz.find(current_quiz).next_question(current_question)
+    next_question ? session[:current_question] = next_question.id : session[:current_question] = nil
   end
 
   protected
