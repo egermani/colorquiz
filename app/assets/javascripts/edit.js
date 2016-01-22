@@ -168,12 +168,13 @@ $( document ).ready(function () {
         var reformattedArray = spots.map(function(obj){ 
            var rObj = {};
            rObj.radius = obj.bounds.width / 2;
+           console.log(raster.getAverageColor(obj).toCSS());
            rObj.color = raster.getAverageColor(obj).toCSS(true);
            rObj.x = Math.floor(obj.position.x)
            rObj.y = Math.floor(obj.position.y)
            return rObj;
         });
-        // debugger;
+        debugger;
         var route = $(this).attr("action")
         $.ajax({
             url: route,
@@ -183,10 +184,4 @@ $( document ).ready(function () {
             data: JSON.stringify({spot: reformattedArray})
             })
     })
-
-    // spot1 = new Spot(15, 900, 300, '1');
-    // spot2 = new Spot(6, 420, 265, '2');
-    // spot3 = new Spot(15, 900, 450, '3');
-    // spot4 = new Spot(15, 960, 200, '4');
-    // spot5 = new Spot(15, 120, 325, '5');
 });

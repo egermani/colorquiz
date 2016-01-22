@@ -126,14 +126,8 @@ $( document ).ready(function () {
         // event.preventDefault();
         // debugger;
         $("td").each(function( cell ) {
-            var avgColor = raster.getAverageColor(spots[cell]).toCSS();
-            var avgColorTuple = tupleizeRGB(avgColor)
-            var avgColorObj = rgb_to_lab(objectifyRGB(avgColor));
-
-            var guessColor = $(this).children(".semi").first().css("background-color");
-            var guessColorTuple = tupleizeRGB(guessColor)
-            var guessColorObj = rgb_to_lab(objectifyRGB(guessColor));
-            guessColor = rgb_to_lab(objectifyRGB(guessColor));
+            var avgColor = raster.getAverageColor(spots[cell]).toCSS(true);
+            debugger;
             $(this).children(".semi").last().css("background-color", avgColor);
         });
     });
