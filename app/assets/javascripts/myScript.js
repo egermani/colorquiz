@@ -135,15 +135,13 @@ $( document ).ready(function () {
             var guessColorObj = rgb_to_lab(objectifyRGB(guessColor));
             guessColor = rgb_to_lab(objectifyRGB(guessColor));
             $(this).children(".semi").last().css("background-color", avgColor);
-            // debugger;
-            $("ol li:nth-child(" + (cell + 1) + ")").html("Lab colors. Guess: " + guessColorObj.L + "2: " + avgColorObj.L + "Distance " + ciede2000(guessColorObj,avgColorObj));
         });
     });
 
     $("#defaults").on("click", function(event) {
         event.preventDefault;
-        $(".semi.left").css("background-color", "#FFF")
-        $(".sp-light+input[type=hidden]").val("#FFF")
+        $(".semi.left").css("background-color", "#FFFFFF")
+        $(".sp-light+input[type=hidden]").val("#FFFFFF")
     })
 
     $("input[type=range]").on("input", function(){

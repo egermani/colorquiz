@@ -2,7 +2,7 @@ class GameController < ApplicationController
 
   def splash
     @user = User.new
-    # render :layout => false
-    redirect_to quiz_path(Quiz.find_by(name: "The Beta Quiz"))
+    # redirect_to quiz_path(Quiz.find_by(name: "The Beta Quiz"))
+    render :thanks, locals: {quiz_round = QuizRound.find()}
   end
 end

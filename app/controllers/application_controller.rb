@@ -48,10 +48,17 @@ class ApplicationController < ActionController::Base
       guess.guesser = current_user
       guess.save!
     end
+
     guest_rounds = guest_user.rounds
     guest_rounds.each do |round|
       round.user = current_user
       round.save!
+    end
+
+    guest_quiz_rounds = guest_user.quiz_rounds
+    guest_quiz_rounds.each do |quiz_round|
+      quiz_round.user = current_user
+      quiz_round.save!
     end
   end
 
