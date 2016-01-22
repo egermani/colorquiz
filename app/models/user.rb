@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :guesses, foreign_key: "guesser_id", :dependent => :destroy
   has_many :rounds, :dependent => :destroy
+  has_many :quiz_rounds
   before_save :generate_name
 
   def generate_name
