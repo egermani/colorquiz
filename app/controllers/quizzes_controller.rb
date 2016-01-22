@@ -11,15 +11,17 @@ class QuizzesController < ApplicationController
 
   def play
     # No currently active quizround OR doesn't match quiz_id
-    unless session[:quiz_id] == @quiz.id && session[:quiz_round_id]
+    unless (session[:quiz_id] == @quiz.id && current_quiz_round)
       session[:quiz_id] = @quiz.id
       session[:current_question] = -1
+      @question = Quiz.find(current_quiz).next_question(current_question)
       @quiz_round = QuizRound.create(user: current_or_guest_user, quiz: @quiz)
       session[:quiz_round_id] = @quiz_round.id
     end
 
-    @question = Quiz.find(current_quiz).next_question(session[:current_question])
-    session[:current_question] = @question.id
+    # session[:current_question] = @question.id
+    @question = Question.find(current_question)
+    @quiz_round = QuizRound.find(current_quiz_round)
 
     unless @question
       session[:quiz_id] = nil
@@ -35,11 +37,13 @@ class QuizzesController < ApplicationController
       @guesses = @round.guesses
       render 'images/play', locals: {next_link: true}
     end
+
+    @guess = Guess.new
+    @spot = @question.questionable
   end
 
   private
     def set_quiz
       @quiz = Quiz.find(params[:id])
-      session[:quiz_id] = params[:id]
     end
 end

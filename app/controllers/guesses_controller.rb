@@ -37,7 +37,9 @@ class GuessesController < ApplicationController
     @guess = Guess.new(guess_params)
     # @guess.guesser = User.find(current_user.id) if current_user
     @guess.guesser = current_or_guest_user
-    @guess.quiz_round = QuizRound.find(session[:quiz_round_id]) if session[:quiz_round_id]
+    if guess_params[:quiz_round_id]
+      set_next_question
+    end
     respond_to do |format|
       if @guess.save
         session[:last_q] = session[:last_q].to_i + 1
@@ -54,6 +56,6 @@ class GuessesController < ApplicationController
   private
 
     def guess_params
-      params.require(:guess).permit(:color, :spot_id, :format)
+      params.require(:guess).permit(:color, :spot_id, :format, :quiz_round_id)
     end
 end

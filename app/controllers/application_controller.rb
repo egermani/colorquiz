@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_or_guest_user, :current_quiz
+  helper_method :current_or_guest_user, :current_quiz, :current_quiz_round, :current_question
   before_action :configure_permitted_parameters, if: :devise_controller?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -64,6 +64,17 @@ class ApplicationController < ActionController::Base
     session[:quiz_id]
   end
 
+  def current_quiz_round
+    session[:quiz_round_id]
+  end
+
+  def current_question
+    session[:current_question]
+  end
+
+  def set_next_question
+    session[:current_question] = Quiz.find(current_quiz).next_question(current_question).id
+  end
 
   protected
 
