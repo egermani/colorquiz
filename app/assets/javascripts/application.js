@@ -18,5 +18,6 @@
 //= require color-diff/lib/diff.js
 //= require brucelindbloom.js
 //= require color_utils.js
+//= require bootstrap/dist/js/bootstrap
 
 // require edit

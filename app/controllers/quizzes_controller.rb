@@ -33,7 +33,8 @@ class QuizzesController < ApplicationController
       @round = Round.new()
       @image.spots.count.times { @round.guesses.build }
       @guesses = @round.guesses
-      render 'images/play', locals: {next_link: true}
+      @next_link = true
+      render 'images/play', layout: true
     end
   end
 
