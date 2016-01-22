@@ -17,8 +17,6 @@ class QuizzesController < ApplicationController
       session[:last_q] = -1
       render :thanks
     end
-<<<<<<< Updated upstream
-=======
 
     if @question.questionable_type == "Image"
       @image = @question.questionable
@@ -28,7 +26,6 @@ class QuizzesController < ApplicationController
       @next_link = true
       render 'images/play', layout: true
     end
->>>>>>> Stashed changes
   end
 
   private
