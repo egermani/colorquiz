@@ -27,7 +27,7 @@ class QuizzesController < ApplicationController
       session[:quiz_id] = nil
       session[:current_question] = nil
       session[:quiz_round_id] = nil
-      render :thanks
+      render :thanks, locals: {quiz_round: @quiz_round}
     elsif @question.questionable_type == "Image"
       @image = @question.questionable
       @round = Round.new()
