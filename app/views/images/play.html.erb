@@ -9,7 +9,9 @@
     <% if current_user.try(:admin?) %>
         <%= submit_tag value = "Fill circles", id: "defaults" %>
     <% end %>
-    
+    <% if current_page?(play_quiz_path) %>
+        <h3 id="nextlink" style="display:none"><a href="./play">Next Question</a></h3>
+    <% end %>
     <div id="roundResults"></div>
     <input id="LSlider" type="range" min="0" max="100" step=".01"/><span>50</span><br>
 <input id="aSlider" type="range" min="-100" max="100" step=".01"/><span>0</span><br>
