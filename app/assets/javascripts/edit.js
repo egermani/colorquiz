@@ -119,7 +119,7 @@ $( document ).ready(function () {
     }
 
     tool.onKeyDown = function (event) {
-        if (event.key == 'backspace') {
+        if (event.key == 'delete') {
         // Scale the path by 110%:
         deleteActive();
 
@@ -159,6 +159,7 @@ $( document ).ready(function () {
         spot = data[i];
         new Spot(spot.radius, spot.x, spot.y, spotCounter+1)
         spotCounter++
+        // console.log(raster.getAverageColor(spots[spots.length -1]).toCSS(true));
     }
 
     $("#spot_submit").on("submit", function(event) {
@@ -173,7 +174,6 @@ $( document ).ready(function () {
            rObj.y = Math.floor(obj.position.y)
            return rObj;
         });
-        // debugger;
         var route = $(this).attr("action")
         $.ajax({
             url: route,
@@ -184,9 +184,9 @@ $( document ).ready(function () {
             })
     })
 
-    // spot1 = new Spot(15, 900, 300, '1');
-    // spot2 = new Spot(6, 420, 265, '2');
-    // spot3 = new Spot(15, 900, 450, '3');
-    // spot4 = new Spot(15, 960, 200, '4');
-    // spot5 = new Spot(15, 120, 325, '5');
+    $("#freshpaint").on("click", function(event) {
+        for (i = 0; i <= $(".paint").length - 1; i++) {
+            $(".paint")[i].value = raster.getAverageColor(spots[i]).toCSS(true);
+        }
+    })
 });

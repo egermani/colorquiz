@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'cancancan', '~> 1.10'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 # ciede2000 formula
 gem 'color_difference'

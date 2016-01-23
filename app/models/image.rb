@@ -7,6 +7,9 @@ class Image < ActiveRecord::Base
   has_many :spots, :dependent => :destroy
   has_many :questions, as: :questionable
 
+  accepts_nested_attributes_for :spots
+
+
   def calculate_par
     if rounds.count > 0
       (rounds.map(&:avg_score).sum / rounds.count).round(2) 

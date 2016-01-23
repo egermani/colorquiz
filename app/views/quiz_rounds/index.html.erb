@@ -1,0 +1,30 @@
+<h1>Listing Quiz Rounds</h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Rounds</th>
+      <th>Score</th>
+      <th>X</th>
+      <th>Radius</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quiz_rounds.each do |round| %>
+      <% unless round.guesses.count == 0 %>
+        <tr>
+          <td><%= round.created_at.localtime.strftime('%m/%d/%y, %I:%M %p') %></td>
+          <td><%= round.quiz.name %></td>
+          <td><%= round.avg_score%></td>
+          <% if current_user.try(:admin?) %>
+            <td><%= link_to 'Show', round %></td>
+            <td><%= link_to 'Destroy', round, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>

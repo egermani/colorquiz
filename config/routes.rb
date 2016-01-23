@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get 'guesses/data', :defaults => { :format => 'json' }
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :rounds
+  resources :quiz_rounds, :only => [:show, :index]
   resources :guesses
   resources :users, :only => :show
   patch 'users/:id' => 'users#update'

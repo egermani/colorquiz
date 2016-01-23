@@ -4,7 +4,7 @@ class RoundsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create] 
 
   def index
-    @rounds = Round.all.sort_by(&:created_at).reverse!
+    @rounds = current_or_guest_user.rounds.sort_by(&:created_at).reverse!
   end
 
   def create
