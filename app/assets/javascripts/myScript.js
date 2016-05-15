@@ -8,7 +8,7 @@ var raster = new Raster('game-image');
 raster.position = view.center;
 
 function Spot(spotSize, xCoord, yCoord, marker) {
-        this.marker = marker
+      this.marker = marker
       this.xCoord = xCoord;
       this.yCoord = yCoord;
       this.path = new paper.Path.Circle({
@@ -137,6 +137,12 @@ $( document ).ready(function () {
         $(".semi.left").css("background-color", "#FFFFFF")
         $(".sp-light+input[type=hidden]").val("#FFFFFF")
     })
+
+    $("input[type=text]").on("input", function(){
+       $("#LSlider").val($("#LText").val());
+       $("#aSlider").val($("#aText").val());
+       $("#bSlider").val($("#bText").val());
+    });
 
     $("input[type=range]").on("input", function(){
         $(this).next().html(this.value);

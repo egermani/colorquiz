@@ -23,6 +23,7 @@ class ImagesController < ApplicationController
   end
 
   def edit
+    p @image
   end
 
   def create
@@ -40,8 +41,6 @@ class ImagesController < ApplicationController
   end
 
   def update
-    p params
-    
     if request.xhr?
       incumbent_spots = Spot.where(image_id: params[:id])
       form_spots = params[:spot].each do |spot|
@@ -67,6 +66,7 @@ class ImagesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
+      redirect_to image_path(params["image_id"])
     end
   end
 

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'game#splash'
+  get 'game/tile'
 
   get 'quizzes/:id/debug' => 'quizzes#debug'
 

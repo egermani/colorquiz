@@ -14,13 +14,15 @@
   |
 <%= link_to "Home", root_path, :class => 'navbar-link'  %>
   |
+<%= link_to "Img Index", images_path, :class => 'navbar-link'  %>
+  |
   <%= link_to "Your Stats", stats_path, :class => 'navbar-link'  %>
   |
 <%= link_to "Beta Quiz", quiz_path(Quiz.find(6)), :class => 'navbar-link'  %>
 
 <% if flash[:alert] %>
     <div class="notice"><%= flash[:alert] %></div>
-  <% end %>
+<% end %>
   <title>Color Quiz Beta</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
