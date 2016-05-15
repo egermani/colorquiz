@@ -40,6 +40,25 @@ class ImagesController < ApplicationController
   end
 
   def update
+    p params
+    
+    if request.xhr?
+      incumbent_spots = Spot.where(image_id: params[:id])
+      form_spots = params[:spot].each do |spot|
+        spot["image_id"] = params[:id].to_i
+        spot["radius"] = spot["radius"].to_i
+        spot["x"] = spot["x"].to_i
+        spot["y"] = spot["y"].to_i
+        unless incumbent_spots.map {|spot| spot.as_json(:except => [:id, :created_at, :updated_at])}
+                              .include?(spot)
+          strong_params = ActionController::Parameters.new(spot).permit(:image_id, :radius, :color, :x, :y)
+          new_spot = Spot.new(strong_params)
+          new_spot.save
+        end
+      end
+      redirect_to image_path(params["image_id"])
+    end
+
     respond_to do |format|
       if @image.update(image_params)
         format.html { redirect_to @image, notice: 'Spot was successfully updated.' }
