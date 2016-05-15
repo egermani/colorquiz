@@ -1,0 +1,22 @@
+%html
+  %head
+    %title
+      Value on Black Game
+    =javascript_include_tag("application.js")
+    =javascript_include_tag("tile.js")
+    =javascript_include_tag("//d3js.org/d3.v3.min.js")
+  %body{style:"background-color:white;"}
+    .wrapper
+      #actual-tile{style:"border-radius:50%;background-color:gray;height:200px;width:200px;margin:0 auto;"}
+      %form#form
+        %input#guess-slider{type:"range", name:"test", style:"width:80%"}
+        %input{type:"submit", value:"Submit!"}
+        %input#again{type:"button", value:"Again!"}
+      %div{style:"color:black;text-align:right;width:200px;"}
+        %p
+          Guess: <span id="guess"></span>
+        %p
+          Answer: <span id="actual"></span>
+        %p
+          Score: <span id="score"></span>
+        %ul
