@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'haml'
 gem 'cancancan', '~> 1.10'
 
 gem 'rails_12factor', group: :production

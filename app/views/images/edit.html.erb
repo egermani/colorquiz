@@ -7,3 +7,7 @@
 <%= submit_tag "Refresh Colors", id: "freshpaint" %>
 
 <%= render partial: "editform", locals: {image: @image, spots: @image.spots} %>
+
+<%= form_tag update_image_path, :id => "spot_submit" do %>
+    <%= submit_tag "New Spots Submit" %>
+<% end %>
